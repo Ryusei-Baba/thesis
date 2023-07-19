@@ -1,0 +1,27 @@
+%!TEX root = ../thesis.tex
+
+ \section{位置エネルギ}
+% \subsection{RoboCup}
+
+% \begin{figure}[hbtp]
+%   \centering
+%  \includegraphics[keepaspectratio, scale=0.8]
+%       {images/mani.png}
+%  \caption{Manipulator}
+%  \label{Fig:manipulator}
+% \end{figure}
+
+マニピュレータの位置エネルギの式を定義する．$i$ 番目のリンクの位置エネルギ $u_i$ は，
+以下の式(2.4)のように表すことができる．
+\begin{equation}
+     u_i =-m_i {}^{0}g^T \; {}^{0}P_{Ci} + u_{refi}
+\end{equation}
+ここで， ${}^{0}g$ は $3 × 1$ の重力ベクトル，${}^{0}P_{Ci}$ は $i$ 番目のリンクの重心位置を示すベクト
+ル，$u_{refi}$ は $u_i$ の最小値が得られるように選択された定数である．マニピュレータに保存
+される位置エネルギの合計は，個々のリンクの位置エネルギの合計なので，
+\begin{equation}
+     u= \sum^{n}_{i=1}u_{i}
+\end{equation}
+と表すことができる．式(2.4)の ${}^{0}P_{Ci}$は$\theta$の関数なので，マニピュレータの位置エネルギは関
+節位置$u(\theta)$の関数としてスカラで記述できる．
+\newpage

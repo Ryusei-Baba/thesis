@@ -1,0 +1,30 @@
+%!TEX root = ../thesis.tex
+
+ \section{ラグランジュ}
+% \subsection{RoboCup}
+
+% \begin{figure}[hbtp]
+%   \centering
+%  \includegraphics[keepaspectratio, scale=0.8]
+%       {images/mani.png}
+%  \caption{Manipulator}
+%  \label{Fig:manipulator}
+% \end{figure}
+
+動的なラグランジュの定式では，機械システムの運動エネルギと位置エネルギの差とし
+て定義されるラグランジュと呼ばれるスカラ関数から方程式を導き出す手段を提供してい
+る．マニピュレータのラグランジュを式で表すと以下の式(2.6)のようになる．
+\begin{equation}
+     {\cal L}(\theta,\dot{\theta})= k(\theta,\dot{\theta})-u(\theta)
+\end{equation}
+マニピュレータの運動方程式は以下の式(2.7)のようになる．
+\begin{equation}
+     \frac{d}{dt}\frac{\partial\cal L}{\partial\dot\theta}-\frac{\partial\cal L}{\partial\theta}=\tau
+\end{equation}
+ここで $\tau$ はアクチュエータのトルクで $n × 1$ ベクトルである．マニピュレータの場合，この
+方程式は，
+\begin{equation}
+     \frac{d}{dt}\frac{\partial k}{\partial\dot\theta}-\frac{\partial k}{\partial\theta}+\frac{\partial u}{\partial\theta}=\tau
+\end{equation}
+のように $k(∙)$ と $u(∙)$ の引数は簡潔のため省略される．
+\newpage

@@ -1,0 +1,35 @@
+%!TEX root = ../thesis.tex
+
+ \section{運動エネルギ}
+% \subsection{RoboCup}
+
+% \begin{figure}[hbtp]
+%   \centering
+%  \includegraphics[keepaspectratio, scale=0.8]
+%       {images/mani.png}
+%  \caption{Manipulator}
+%  \label{Fig:manipulator}
+% \end{figure}
+マニピュレータの運動エネルギの式を定義する．$i$ 番目のリンクの運動エネルギ $k$ は，
+以下の式(2.1)のように表すことができる．
+\begin{equation}
+     k_i= \frac{1}{2} m_i v_{Ci}^{T} v_{Ci} +\frac{1}{2} {}^{i}{\omega}_{i}^{T}  {}^{Ci} I_i {}^{i}{\omega}_i
+\end{equation}
+ここで，式(2.1)の第 1 項はリンクの重心の速度による運動エネルギであり，第 2 項はリンク
+の角速度による運動エネルギである．マニピュレータの総運動エネルギは，個々のリンク
+の運動エネルギの合計なので，
+\begin{equation}
+     k= \sum^{n}_{i=1}k_{i}
+\end{equation}
+と表すことができる．式(2.1)の $v_{Ci}$ と ${}^{i}{\omega}_{i}$ は$\theta$と$\dot{\theta}$の関数なので， マニピュレータの運動エ
+ネルギは関節の位置と速度 $k(\theta,\dot{\theta})$ の関数としてスカラで記述できる．実際，マニピュレー
+タの運動エネルギは次のように与えられる．
+\begin{equation}
+     k(\theta,\dot{\theta})= \frac{1}{2} \dot{\theta}^T M(\theta) \dot{\theta}
+\end{equation}
+ここで，$M(\theta)$は $n×n$ で表されるマニピュレータの質量行列である．式(2.3)の形式は，二
+次関数として知られている．展開すると，結果として得られるスカラ方程式が二次関数に
+依存する項のみで構成される．さらに，総運動エネルギは常に正でなければならないた
+め，マニピュレータの質量行列は正定行列である必要がある．正定行列は，二次関数が常
+に正のスカラであるという特性を持つ行列である．
+\newpage
