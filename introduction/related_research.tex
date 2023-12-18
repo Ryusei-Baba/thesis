@@ -1,0 +1,28 @@
+%!TEX root = ../thesis.tex
+
+\section{関連研究}
+     \begin{figure}[h]
+          \centering
+          \includegraphics[keepaspectratio, scale=0.16] {images/bojarski_train.png}
+          \caption{Training the neural network \cite{bojarski}}
+          \label{Fig:bojarski_train}
+     \end{figure}
+
+学習後は，\figref{Fig:bojarski_test}に示すようにカメラ画像から直接，ステアリングコマンドを出力するシステムになっている．
+
+     \begin{figure}[h]
+          \centering
+          \includegraphics[keepaspectratio, scale=0.20] {images/bojarski_test.png}
+          \captionsetup{justification=raggedright} % キャプションを左寄せに
+          \caption{The trained network is used to generate steering commands from a single front-facing center camera. \cite{bojarski}}
+          \label{Fig:bojarski_test}
+     \end{figure}
+
+     \begin{figure}[h]
+          \centering
+          \includegraphics[keepaspectratio, scale=0.35] {images/bojarski_CNN.png}
+          \captionsetup{justification=raggedright} % キャプションを左寄せに
+          \caption{How the CNN ``sees'' an unpaved road. Top: subset of the camera image sent to the CNN. Bottom left: Activation of the first layer feature maps. Bottom right: Activation of the second layer feature maps. This demonstrates that the CNN learned to detect useful road features on its own, i.e., with only the human steering angle as training signal. We never explicitly trained it to detect the outlines of roads. \cite{bojarski}}
+          \label{Fig:bojarski_CNN}
+     \end{figure}
+\newpage
