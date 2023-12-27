@@ -1,0 +1,14 @@
+%!TEX root = ../thesis.tex
+
+\section{追従フェーズ}
+
+  追従フェーズでは，学習フェーズで学習したモデルを活用し，\figref{Fig:okada_route}に示す経路（学習フェーズと同じ経路）を使用してテストを行う．この際，引き紐は不要であり，代わりに深層学習器に画像が入力され，その出力がロボットの行動となる．つまり，学習フェーズで利用された引き紐によるルールベース制御器の出力ではなく，カメラ画像に基づく深層学習器の出力がロボットの行動になる．
+
+  \begin{figure}[h]
+    \centering
+    \includegraphics[keepaspectratio, scale=0.70] {images/okada_route.png}
+    \caption{Target trajectory that the operator walks \cite{okada}}
+    \label{Fig:okada_route}
+  \end{figure}
+
+\newpage

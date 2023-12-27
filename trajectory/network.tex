@@ -1,0 +1,31 @@
+%!TEX root = ../thesis.tex
+
+\section{ネットワークの構造}
+
+  ネットワークを\figref{Fig:okada_network}に示す．これは，Chainer\cite{chainer}という深層学習フレームワークでCNNをベースとしており，入力層，畳み込み層3，全結合層2，出力層の7層で構成されている．また，ハイパーパラメータを\tabref{tab:Parameters of network configured with chainer}に示す．
+
+  \begin{figure}[h]
+    \centering
+    \includegraphics[keepaspectratio, scale=0.70] {images/okada_network.png}
+    \caption{Structure of the network \cite{okada}}
+    \label{Fig:okada_network}
+  \end{figure}
+
+  \begin{table}[hbtp]
+    \caption{Parameters of network configured with chainer}
+    \label{tab:Parameters of network configured with chainer}
+    \centering
+    \begin{tabular}{|c|c|}
+      \hline
+      Input data & Image(64x48 pixels, RGB channels) \\
+      \hline
+      Optimizer & Adam($alpha = 0.001, beta1 = 0.9, beta2 =  0.999, eps = 1e^{-2}$)\\
+      \hline
+      Loss function & Softmax-cross-entropy\\
+      \hline
+      Output data & Action (Forward, Turn Left, Turn Right)\\
+      \hline
+    \end{tabular}
+  \end{table}
+
+\newpage
