@@ -2,20 +2,22 @@
 
 \section{追従フェーズ}
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[keepaspectratio, scale=0.7] {images/RobotGuidance_following_phase_leg.png}
-  \captionsetup{justification=raggedright} % キャプションを左寄せに
-  \caption{Without retroreflective tape}
-  \label{Fig:RobotGuidance_following_phase_leg}
-\end{figure}
+  追従フェーズの概要を\figref{Fig:RobotGuidance_following_system}に示す．追従フェーズでは，学習フェーズで学習したモデルを用いる．ここでは，2DLiDARを使用せず，深層学習器の出力がロボットの行動になる．つまり，2DLiDARの反射強度を利用したルールベース制御器の出力がロボットの行動になるのではなく，画像を入力とした深層学習器の出力がロボットの行動になる．
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[keepaspectratio, scale=0.60] {images/RobotGuidance_following_system.png}
-  \captionsetup{justification=raggedright} % キャプションを左寄せに
-  \caption{Proposed method in the following phase}
-  \label{Fig:RobotGuidance_following_system}
-\end{figure}
+  \begin{figure}[h]
+    \centering
+    \includegraphics[keepaspectratio, scale=0.45] {images/RobotGuidance_following_system.png}
+    \captionsetup{justification=raggedright} % キャプションを左寄せに
+    \caption{Proposed method in the following phase}
+    \label{Fig:RobotGuidance_following_system}
+  \end{figure}
+
+  \begin{figure}[h]
+    \centering
+    \includegraphics[keepaspectratio, scale=0.55] {images/RobotGuidance_following_phase_leg.png}
+    \captionsetup{justification=raggedright} % キャプションを左寄せに
+    \caption{Without retroreflective tape}
+    \label{Fig:RobotGuidance_following_phase_leg}
+  \end{figure}
 
 \newpage
