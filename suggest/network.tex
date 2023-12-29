@@ -2,11 +2,30 @@
 
 \section{ネットワーク構造}
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[keepaspectratio, scale=0.60] {images/RobotGuidance_network.png}
-  \caption{Architecture of the network}
-  \label{Fig:RobotGuidance_network}
-\end{figure}
+  ネットワークを\figref{Fig:RobotGuidance_network}に示す．これは，PyTorch\cite{pytorch}というGPUとCPUを使用した深層学習用に最適化されたテンソルライブラリでCNNをベースとしており，入力層，畳み込み層3，全結合層2，出力層の7層で構成されている．深層学習器は，縮小された画像と選択された行動を0.2秒周期で収集して学習する．これに使用されたハイパーパラメータを\tabref{tab:Parameters of network configured with pytorch}に示す．
+
+  \begin{figure}[h]
+    \centering
+    \includegraphics[keepaspectratio, scale=0.60] {images/RobotGuidance_network.png}
+    \caption{Architecture of the network}
+    \label{Fig:RobotGuidance_network}
+  \end{figure}
+
+  \begin{table}[hbtp]
+    \caption{Parameters of network configured with PyTorch}
+    \label{tab:Parameters of network configured with pytorch}
+    \centering
+    \begin{tabular}{|c|c|}
+      \hline
+      Input data & Image(64x48 pixels, RGB channels) \\
+      \hline
+      Optimizer & Adam($alpha = 0.001, beta1 = 0.9, beta2 =  0.999, eps = 1e^{-2}$)\\
+      \hline
+      Loss function & Softmax-cross-entropy\\
+      \hline
+      Output data & Angular velocity\\
+      \hline
+    \end{tabular}
+  \end{table}
 
 \newpage
