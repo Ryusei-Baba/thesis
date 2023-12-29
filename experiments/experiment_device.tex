@@ -2,6 +2,8 @@
 
 \section{実験装置}
 
+  本研究で使用した実験装置を\figref{Fig:RobotGuidance_experiment_device}に示す．ハードウェアは，T-frogプロジェクトのi-Cart\ mini\cite{t-flog}をベースとしたロボット，ORNE-box\cite{orne-box1}\cite{orne-box2}を使用する．このロボットは，拡張性に優れており，センサの取り付け位置を自由に変えられる．よって，カメラを上部のハンドル部分に，2DLiDARを下部の足元付近に設置した．PCの仕様を\tabref{tab:Laptop specifications}に示す．また，ソフトウェアはROSを用いて構築している．深層学習のフレームワークには，PyTorchを用いている．
+
   \begin{figure}[h]
     \centering
     \includegraphics[keepaspectratio, scale=0.60] {images/RobotGuidance_experiment_device.png}
@@ -16,6 +18,7 @@
     \centering
     \begin{tabular}{|c|c|}
     \hline
+    Processor & Spec                               \\ \hline
     OS   & Ubuntu 20.04 LTS                        \\ \hline
     ROS  & Noetic                                  \\ \hline
     CPU  & intel Core i7-10700F(4.8GHz/8コア/16スレッド) \\ \hline
