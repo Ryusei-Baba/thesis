@@ -2,7 +2,9 @@
 
 \section{追従フェーズ}
 
-  追従フェーズの概要を\figref{Fig:RobotGuidance_following_system}に示す．追従フェーズでは，学習フェーズで学習したモデルを用いる．ここでは，2DLiDARを使用せず，深層学習器の出力がロボットの行動になる．つまり，2DLiDARの反射強度を利用したルールベース制御器の出力がロボットの行動になるのではなく，画像を入力とした深層学習器の出力がロボットの行動になる．
+  追従フェーズの概要を\figref{Fig:RobotGuidance_following_system}に示す．追従フェーズでは，学習フェーズで獲得したモデルを用いる．ここでは，2DLiDARを使用せず，代わりに深層学習器の出力がロボットの行動に影響を与える．つまり，2DLiDARの反射強度に基づくルールベース制御器の出力ではなく，画像を入力とした深層学習器の出力がロボットの行動を決定する．
+
+  \vspace{0.5cm}
 
   \begin{figure}[h]
     \centering
@@ -11,6 +13,8 @@
     \caption{Proposed method in the following phase}
     \label{Fig:RobotGuidance_following_system}
   \end{figure}
+
+  \vspace{0.5cm}
 
   \begin{figure}[h]
     \centering

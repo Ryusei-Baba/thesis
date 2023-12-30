@@ -2,7 +2,7 @@
 
 \section{ネットワーク構造}
 
-  ネットワークを\figref{Fig:RobotGuidance_network}に示す．これは，PyTorch\cite{pytorch}という深層学習フレームワークでCNNをベースとしており，入力層，畳み込み層3，全結合層2，出力層の7層で構成されている．深層学習器は，縮小された画像と選択された行動を0.2秒周期で収集して学習する．これを1stepとする．使用したハイパーパラメータを\tabref{tab:Parameters of network configured with pytorch}に示す．
+  ネットワークを\figref{Fig:RobotGuidance_network}に示す．これは，深層学習フレームワークであるPyTorch\cite{pytorch}を使用し，CNNをベースとしている．具体的には，入力層，畳み込み層3，全結合層2，出力層の7層で構成している．深層学習器は，縮小された画像と選択された行動を0.2秒周期で収集して学習する．これを1stepとする．使用したハイパーパラメータを\tabref{tab:Parameters of network configured with pytorch}に示す．
 
   \begin{figure}[h]
     \centering

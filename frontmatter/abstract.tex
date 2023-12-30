@@ -2,29 +2,33 @@
 \chapter*{概要}
 \thispagestyle{empty}
 %
-\begin{center}
-  \scalebox{1.5}{測域センサの反射強度を利用した視覚と行動の}\\
-  \scalebox{1.5}{end-to-end 学習による人追従行動の模倣}\\
-\end{center}
-\vspace{1.0zh}
-%
-\par
-本研究室でも，機械学習を用いた画像に基づく人追従行動の生成に関する研究を行ってきた\cite{pasin1}\cite{pasin2}\cite{pasin3}\cite{okada}．
-\vspace{12.0zh}
+  \begin{center}
+    \scalebox{1.5}{測域センサの反射強度を利用した視覚と行動の}\\
+    \scalebox{1.5}{end-to-end 学習による人追従行動の模倣}\\
+  \end{center}
+  \vspace{1.0zh}
+  %
+  \par
+  近年，機械学習を活用した自律移動に関する研究が盛んに行われている．本研究室でも，引き紐に接続されたリンクの角度を報酬として利用し，強化学習することで，画像に基づく人追従行動を生成する手法や，引き紐を入力とするルールベース制御器の出力を教師信号として深層学習器に与えることで，ロボットの人追従行動をオンラインで模倣する手法を提案している．また，実ロボットを用いた実験により，カメラ画像に基づいた人追従行動が可能であることを確認している．
 
-\par キーワード: 人追従，end-to-end学習，モバイルロボット
+  従来は，引き紐に依存した人追従行動を生成してきたが，測域センサの反射強度を利用することで同様の人追従行動を生成できる可能性がある．これにより，学習時のセンサの使用に新たな選択肢が加わり，そのメリットが生まれる．本研究では，測域センサの反射強度を利用したルールベース制御器による人追従行動を生成する手法を提案し，その出力を教師信号としてカメラ画像に基づいた人追従行動が可能かどうかを，実ロボットを用いた実験により提案手法の有効性を検証する．
+
+
+  \vspace{1.5zh}
+
+  \par キーワード: 人追従，end-to-end学習，モバイルロボット
 %
 \newpage
 %%
-\chapter*{abstract}
-\thispagestyle{empty}
-%
-\begin{center}
-  \scalebox{1.3}{Imitation-based end-to-end learning for human tracking behavior}
-  \scalebox{1.3}{using reflected intensity from range sensors}
-\end{center}
-\vspace{1.0zh}
-%
+  \chapter*{abstract}
+  \thispagestyle{empty}
+  %
+  \begin{center}
+    \scalebox{1.3}{Imitation-based end-to-end learning for human tracking behavior}
+    \scalebox{1.3}{using reflected intensity from range sensors}
+  \end{center}
+  \vspace{1.0zh}
+  %
 
 
-keywords: Person following, End-to-end learning, Mobile robot
+  keywords: Person following, End-to-end learning, Mobile robot

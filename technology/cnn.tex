@@ -2,7 +2,7 @@
 
 \section{Convolutional Neural Network (CNN)}
 
-  本研究の学習器は畳み込みニューラルネットワーク（Convolutional Neural Network：CNN）で，これは画像認識などで用いられている\cite{yann1}\cite{alex}．ニューラルネットワークに畳み込み層とプーリング層を含み，多次元配列の形式データを処理するように設計されている．例として，LeCunら\cite{yann1}は\figref{Fig:yann_CNN}に示すように畳み込み層とプーリング層を連続して接続するネットワークを用いることで，手書き文字を識別できることを示した．また，Krizhevskyら\cite{alex}は深い畳み込みニューラルネットワークを用いることで，1000種類のクラスに分類できることを示し（\figref{Fig:deep_convolutional_neural_networks}），ILSVRC(ImageNet Large Scale Visual Recognition Challenge)2012で優勝した．
+  本研究の学習器は畳み込みニューラルネットワーク（Convolutional Neural Network：CNN）で，これは画像認識などで用いられている\cite{yann1}\cite{alex}．畳み込み層とプーリング層を含む構造で，多次元配列の形式データを効率的に処理するように設計されている．例として，LeCunら\cite{yann1}は，畳み込み層とプーリング層を連続して接続するネットワークを用いることで，手書き文字を識別できることを示した（\figref{Fig:yann_CNN}）．また，Krizhevskyら\cite{alex}は，深い畳み込みニューラルネットワークを用いることで，1000種類のクラスに分類できることを示し（\figref{Fig:deep_convolutional_neural_networks}），ILSVRC(ImageNet Large Scale Visual Recognition Challenge)2012で優勝した．
 
   CNNは，主に畳み込み層，プーリング層，および全結合層から構成される．以下に，それぞれの特徴を記す．
 
