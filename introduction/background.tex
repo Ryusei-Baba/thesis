@@ -12,14 +12,14 @@
   \begin{figure}[h]
     \centering
     \includegraphics[keepaspectratio, scale=0.45] {images/pasin_system.png}
-    \caption{Proposed method \cite{pasin1}}
+    \caption[Proposed method]{Proposed method (source: \cite{pasin1})}
     \label{Fig:pasin_system}
   \end{figure}
 
   岡田ら\cite{okada}は，強化学習のような教師なし学習ではなく，深層学習\cite{yann2}という教師あり学習を用いて画像に基づく人追従行動を生成する手法を提案している．この手法は，後述するBojarskiら\cite{bojarski}の技術（end-to-end学習）を人追従問題に応用しており，強化学習を使用していないため，ロボットの行動がランダムに選択されることはない．また，学習時はルールベース制御器でロボットを制御しているので，常に人を追従する．つまり，学習時にも人追従行動を獲得でき，強化学習を採用する手法と比べて追従対象者の負担が少ないというメリットがある．
   \figref{Fig:okada_system}にシステムの概要を示す．まず，学習時には，追従対象者が引き紐を操作する．引き紐にはパシンらと同様にポテンショメータが取り付けられており，ヨ―関節の変位角が0度となるようにロボットは直進や左旋回，右旋回のいずれかの行動で制御される．並行して，これらの行動とカメラ画像を深層学習器にオンラインでend-to-end学習する．学習後は，追従対象者が引き紐を操作しなくても，深層学習器によりカメラ画像を入力するだけで，出力は直進や左旋回，右旋回といった行動を選択する．つまり，学習時のルールベース制御器（引き紐による人追従行動）を模倣するような深層学習器（カメラ画像による人追従行動）になっている．
 
-  これまで本研究室では，引き紐に依存した人追従行動を生成してきたが，2DLiDARの反射強度を利用することで同様の人追従行動を生成できる可能性がある．もし本研究の提案手法が有効であることが確認されれば，学習時のルールベース制御器に新たな選択肢が加わり，そのメリットが生まれる．
+  これまで本研究室では，引き紐を用いて人追従行動を生成してきたが，測域センサの反射強度を利用することで同様の人追従行動を生成できる可能性がある．もし本研究の提案手法が有効であることが確認されれば，学習時のルールベース制御器に新たな選択肢が加わり，そのメリットが生まれる．
 
 \newpage
 
@@ -36,7 +36,7 @@
         \includegraphics[width=100mm]{images/okada_following_phase_system.png}
         \subcaption{Following phase}
     \end{minipage}
-    \caption{The proposed method for learning of the person-following behavior\cite{okada}}
+    \caption[The proposed method for learning of the person-following behavior]{The proposed method for learning of the person-following behavior (source: \cite{okada})}
     \label{Fig:okada_system}
   \end{figure}
 

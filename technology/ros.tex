@@ -2,18 +2,18 @@
 
 \section{ROS}
 
-ROS（Robot Operating System）\cite{ros}は，オープンソースのロボットソフトウェアフレームワークであり，ロボットアプリケーションの開発や実行をサポートするミドルウェアである．異なるバージョンが存在しているが，本研究ではROS Noeticを対象としている．
+ROS（Robot Operating System）\cite{ros}は，オープンソースのロボットソフトウェアフレームワークであり，ロボットアプリケーションの開発や実行をサポートするミドルウェアである．異なるバージョンが存在しているが，本研究ではROS Noeticを使用している．
 
 \subsection{LiDAR}
 
-  LiDAR（Light Detection and Ranging）は，光を利用して距離を測定する技術であり，具体的には，レーザー光を発射し，対象物に当たって反射し戻ってくるまでの時間を計測することで距離を推定する．また，使用する装置によっては，物体によってどれだけの光が反射されたかを示す反射強度も測定することができる．したがって，LiDARは周囲の状況を把握し，環境認識や物体検知などに利用される．
+  LiDAR（Light Detection and Ranging）は，光を利用して距離を測定する技術であり，具体的には，レーザ光を発射し，対象物に当たって反射し戻ってくるまでの時間を計測することで距離を推定する．また，使用する装置によっては，物体によってどれだけの光が反射されたかを示す反射強度も測定することができる．したがって，LiDARは周囲の状況を把握し，環境認識や物体検知などに利用される．
 
-  本研究で使用する2DLiDARを\figref{Fig:hokuyo_lidar}に示す．これは，北陽電気社製の2DLiDARであり，ROS上で\texttt{urg\_node}\cite{urg_node}というパッケージが提供されている．この\texttt{urg\_node}は，検出範囲（最大270 \,[deg]）や反射強度の使用有無などのパラメータを変更するだけで簡単にデータのやり取りが可能である．
+  本研究で使用する2DLiDARを\figref{Fig:hokuyo_lidar}に示す．これは，北陽電機社製の2DLiDARであり，ROS上で\texttt{urg\_node}\cite{urg_node}というパッケージが提供されている．この\texttt{urg\_node}は，検出範囲（最大270 \,[deg]）や反射強度の使用有無などのパラメータを変更するだけで簡単にデータのやり取りが可能である．
 
   \begin{figure}[h]
     \centering
     \includegraphics[keepaspectratio, scale=0.80] {images/RobotGuidance_hokuyo_lidar.png}
-    \caption{Hokuyo 2DLiDAR (UTM-30LX) \cite{hokuyo}}
+    \caption[Hokuyo 2DLiDAR (UTM-30LX)]{Hokuyo 2DLiDAR (UTM-30LX) (source: \cite{hokuyo})}
     \label{Fig:hokuyo_lidar}
   \end{figure}
 
@@ -26,7 +26,7 @@ ROS（Robot Operating System）\cite{ros}は，オープンソースのロボッ
   \begin{figure}[h]
     \centering
     \includegraphics[keepaspectratio, scale=0.60] {images/RobotGuidance_rviz.png}
-    \caption{RViz（Display robot model and scan data）}
+    \caption{RViz (Display robot model and scan data)}
     \label{Fig:RobotGuidance_rviz}
   \end{figure}
 

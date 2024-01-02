@@ -7,7 +7,7 @@
   \begin{figure}[h]
     \centering
     \includegraphics[keepaspectratio, scale=0.70] {images/okada_rule-based_contoroller.png}
-    \caption{Action according to angles of the joint \cite{okada}}
+    \caption[Action according to angles of the joint]{Action according to angles of the joint (source: \cite{okada})}
     \label{Fig:okada_rule-based_contoroller}
   \end{figure}
 
@@ -15,14 +15,13 @@
     \caption{The control rule and action parameters}
     \label{tab:actions_control_parameters}
     \centering
-    \begin{tabular}{|c|c|c|c|}
+    \begin{tabular}{cccc}
     \hline
-    \textbf{Action} & \textbf{Control rule} & \textbf{Linear velocity} & \textbf{Angular velocity} \\ 
+    Action & Control rule & Linear velocity & Angular velocity \\ 
+    \hline
     \hline
     Turn Left & $\theta_{\mathrm{yaw}} > 10 \, \mathrm{deg}$ & 0.1 \,m/s & 0.2 \,rad/s \\ 
-    \hline
     Forward & $-10 \, \mathrm{deg} < \theta_{\mathrm{yaw}} < 10 \, \mathrm{deg}$ & 0.1 \,m/s & 0 \,rad/s \\ 
-    \hline
     Turn Right & $\theta_{\mathrm{yaw}} < -10 \, \mathrm{deg}$ & 0.1 \,m/s & -0.2 \,rad/s \\ 
     \hline
     \end{tabular}
