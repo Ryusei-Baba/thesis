@@ -6,7 +6,7 @@
 
   \begin{figure}[h]
     \centering
-    \includegraphics[keepaspectratio, scale=0.60] {images/eps/RobotGuidance_network}
+    \includegraphics[keepaspectratio, scale=0.60] {images/pdf/RobotGuidance_network}
     \caption{Architecture of the network}
     \label{Fig:RobotGuidance_network}
   \end{figure}
@@ -18,7 +18,7 @@
     \begin{tabular}{cc}
       \hline
       Input data & Image(64x48 pixels, RGB channels) \\
-      Optimizer & Adam($alpha = 0.001, beta1 = 0.9, beta2 =  0.999, eps = 1e^{-2}$)\\
+      Optimizer & Adam($alpha = 0.001, beta1 = 0.9, beta2 =  0.999, pdf = 1e^{-2}$)\\
       Loss function & Softmax-cross-entropy\\
       Output data & Angular velocity\\
       \hline

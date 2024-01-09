@@ -6,7 +6,7 @@
 
   \begin{figure}[h]
     \centering
-    \includegraphics[keepaspectratio, scale=0.70] {images/eps/okada_network}
+    \includegraphics[keepaspectratio, scale=0.70] {images/pdf/okada_network}
     \caption[Structure of the network]{Structure of the network (source: \cite{okada})}
     \label{Fig:okada_network}
   \end{figure}
@@ -18,7 +18,7 @@
     \begin{tabular}{cc}
       \hline
       Input data & Image(64x48 pixels, RGB channels) \\
-      Optimizer & Adam($alpha = 0.001, beta1 = 0.9, beta2 =  0.999, eps = 1e^{-2}$)\\
+      Optimizer & Adam($alpha = 0.001, beta1 = 0.9, beta2 =  0.999, pdf = 1e^{-2}$)\\
       Loss function & Softmax-cross-entropy\\
       Output data & Action (Forward, Turn Left, Turn Right)\\
       \hline

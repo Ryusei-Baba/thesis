@@ -2,16 +2,16 @@
 
 \section{背景}
   近年，機械学習を活用した自律移動に関する研究が盛んに行われている．本研究室でも，機械学習を用いて画像に基づく人追従行動の生成に関する研究を行ってきた．
+  パシンら\cite{pasin1}\cite{pasin2}\cite{pasin3}は，引き紐を利用して画像に基づく人追従行動を生成する手法を提案している．この手法では，深層強化学習\cite{hado}を活用しており，引き紐に取り付けられたポテンショメータでリンクの角度を取得し，それに応じた報酬をエージェント（ロボット）に与えて強化学習\cite{leslie}する．そして，画像と行動を深層学習\cite{yann2}することで，画像に基づいて人追従する行動を生成できることを示した．
+  \figref{Fig:pasin_system}にシステムの概要を示す．入力は画像で，出力は直進，左旋回，右旋回のいずれかの行動である．引き紐は，報酬を与えるためのみに利用され，ロボットの行動選択の入力としては用いていない．目的とする行動は人の追従であるため，選択された行動が適切であれば紐の向きとロボットの進行方向が一致するが，適切でない場合は一致しない．ここで，紐の向きと進行方向が一致しているときに高い報酬を与えている．
 
-  パシンら\cite{pasin1}\cite{pasin2}\cite{pasin3}は，引き紐を利用して画像に基づく人追従行動を生成する手法を提案している．この手法では，深層強化学習\cite{hado}を活用しており，引き紐に取り付けられたポテンショメータでリンクの角度を取得し，それに応じた報酬をエージェント（ロボット）に与えて強化学習\cite{leslie}することで，画像に基づいて人追従する行動を生成できることを示した．
-  \figref{Fig:pasin_system}にシステムの概要を示す．入力は画像で，出力は直進，左旋回，右旋回のいずれかの行動である．報酬は，引き紐を取り付けたリンクの角度に基づいており，人がロボットの正面に立つと報酬が高くなるように設定されている．ロボットは報酬が高くなるように行動を選択するため，引き紐を持つ人がロボットの正面にいない場合は，引き紐を持つ人がロボットの正面になるように，左旋回や右旋回といった行動を選択する．引き紐を持つ人が正面にいる場合は，ロボットは直進を選択する．さまざまな行動と画像に対して，リンクの角度に応じた報酬を与えることで，徐々に人を追従する適切な行動を選択していった．
-  しかし，強化学習の特性により，行動の選択がランダムに探索される場合がある．その結果，報酬の低い行動が選択され，追従対象者が望まない行動が発生する可能性があった．また，カメラ画像に基づく人追従行動を獲得するまでに約20分かかり，その間にロボットは望まない行動を繰り返すため，追従対象者に比較的負担がかかるという問題があった．
+  さまざまな行動と画像に対して，リンクの角度に応じた報酬を与えることで，徐々に人を追従する行動を選択していった．学習時間は約20分であるが，強化学習の特性により行動がランダムに選択されていた．この際に，ロボットは望まない行動を繰り返すため，追従対象者に比較的負担がかかるという問題があった．
 
 \newpage
 
   \begin{figure}[h]
     \centering
-    \includegraphics[keepaspectratio, scale=0.45] {images/eps/pasin_system.eps}
+    \includegraphics[keepaspectratio, scale=1.25] {images/pdf/pasin_system}
     \caption[Proposed method]{Proposed method (source: \cite{pasin1})}
     \label{Fig:pasin_system}
   \end{figure}
@@ -27,13 +27,13 @@
     \centering
     \begin{minipage}[c]{100mm} 
         \centering
-        \includegraphics[width=100mm]{images/eps/okada_learning_phase_system.eps}
+        \includegraphics[width=100mm]{images/pdf/okada_learning_phase_system.pdf}
         \subcaption{Learning phase}
     \end{minipage} \\
     \vspace{1em} % 画像とキャプションの間にスペースを追加
     \begin{minipage}[c]{100mm} 
         \centering
-        \includegraphics[width=100mm]{images/eps/okada_following_phase_system.eps}
+        \includegraphics[width=100mm]{images/pdf/okada_following_phase_system.pdf}
         \subcaption{Following phase}
     \end{minipage}
     \caption[The proposed method for learning of the person-following behavior]{The proposed method for learning of the person-following behavior (source: \cite{okada})}
