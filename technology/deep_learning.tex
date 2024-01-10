@@ -6,7 +6,7 @@
 
   \begin{figure}[h]
     \centering
-    \includegraphics[keepaspectratio, scale=0.30] {images/pdf/deep_neural_network}
+    \includegraphics[keepaspectratio, scale=0.45] {images/pdf/deep_neural_network}
     \caption{Neural network}
     \label{Fig:deep_neural_network}
   \end{figure}
@@ -21,7 +21,7 @@
 
   \begin{figure}[h]
     \centering
-    \includegraphics[keepaspectratio, scale=0.70] {images/pdf/RobotGuidance_about_end-to-end}
+    \includegraphics[keepaspectratio, scale=0.90] {images/pdf/RobotGuidance_about_end-to-end}
     \caption{Structure of end-to-end learning}
     \label{Fig:about_end-to-end}
   \end{figure}
@@ -30,7 +30,11 @@
 
 \subsection{ミニバッチ学習}
 
-  本研究は，オンライン（データを収集しながら）でミニバッチ学習を行う．利点として，リアルタイムでのデータへの迅速な適応性が挙げられる．新しいデータが入手されるたびに，小さなバッチごとにモデルを即座に更新することで，変動する状況にリアルタイムで対応し，モデルの性能を最新かつ効果的に維持することが可能である．通常，データセット全体を一度に処理するバッチ学習と，一つずつのデータを処理するオンライン学習の中間に位置するアプローチである．本論文では，「オンラインで学習」と「オンライン学習」の使い分けに注意する．
+  ミニバッチ学習は，データをミニバッチという小さなグループに分割してモデルを学習するアプローチである．通常，データセット全体を一度に処理するバッチ学習と，一つずつのデータを処理するオンライン学習の中間に位置する．
+
+  \vspace{2cm}
+
+  本研究は，オンライン（タスクを行いながらデータを収集）で学習（end-to-end学習とミニバッチ学習を組み合わせた学習）を行う．
 
 \newpage
 
@@ -51,7 +55,7 @@
 
   \begin{figure}[h]
     \centering
-    \includegraphics[keepaspectratio, scale=0.50] {images/pdf/yann_CNN}
+    \includegraphics[keepaspectratio, scale=0.80] {images/pdf/yann_CNN}
     \caption[Training the neural network]{Training the neural network (source: \cite{yann1})}
     \label{Fig:yann_CNN}
   \end{figure}
@@ -60,7 +64,7 @@
 
   \begin{figure}[h]
     \centering
-    \includegraphics[keepaspectratio, scale=0.30] {images/pdf/deep_convolutional_neural_networks}
+    \includegraphics[keepaspectratio, scale=0.80] {images/pdf/deep_convolutional_neural_networks}
     \caption[ImageNet classification with deep convolutional neural network]{ImageNet classification with deep convolutional neural network (source: \cite{alex})}
     \label{Fig:deep_convolutional_neural_networks}
   \end{figure}
