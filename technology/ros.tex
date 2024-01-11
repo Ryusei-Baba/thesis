@@ -8,7 +8,7 @@ ROS（Robot Operating System）\cite{ros}は，オープンソースのロボッ
 
   LiDAR（Light Detection and Ranging）は，光を利用して距離を測定する技術であり，具体的には，レーザ光を発射し，対象物に当たって反射し戻ってくるまでの時間を計測することで距離を推定する．また，使用する装置によっては，物体によってどれだけの光が反射されたかを示す反射強度も測定することができる．したがって，LiDARは周囲の状況を把握し，環境認識や物体検知などに利用される．
 
-  本研究で使用する2DLiDARを\figref{Fig:hokuyo_lidar}に示す．これは，北陽電機社製の2DLiDARであり，ROS上で\texttt{urg\_node}\cite{urg_node}というパッケージが提供されている．この\texttt{urg\_node}は，検出範囲（最大270 \,[deg]）や反射強度の使用有無などのパラメータを変更するだけで簡単にデータのやり取りが可能である．
+  本研究で使用する2DLiDARを\figref{Fig:hokuyo_lidar}に示す．これは，北陽電機社製の2DLiDARであり，ROS上で\texttt{urg\_node}\cite{urg_node}というパッケージが提供されている．この\texttt{urg\_node}は，検出範囲（最大270 \,[deg]）や反射強度の使用有無などのパラメータを変更するだけでデータの取得が可能である．
 
   \begin{figure}[h]
     \centering

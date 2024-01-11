@@ -2,7 +2,7 @@
 
 \section{学習フェーズ}
 
-  学習フェーズのシステムを\figref{Fig:RobotGuidance_learning_system}に示す．学習フェーズでは，2DLiDARの反射強度を利用したルールベース制御器を用いて，\figref{Fig:RobotGuidance_learning_phase_leg}に示す追従対象者の足に装着した再帰反射テープに追従するようにロボットを制御する．ルールベース制御器の出力は，ロボットのヨ―方向の角速度$\omega$の1つとし，角速度$\omega$が0 \,[rad/s]となるようにロボットを制御することで人追従することが可能と考えられる．並行して，この行動とカメラの画像データを深層学習器に入力して，オンラインで学習させる．なお，並進速度は0.2 \,[m/s]で一定にしているため，深層学習器に入力しない．
+  学習フェーズのシステムを\figref{Fig:RobotGuidance_learning_system}に示す．このフェーズでは，ルールベース制御器を用いてロボットを制御する．ルールベース制御器は，反射強度の高い方向にロボットを追従させる制御で，\figref{Fig:RobotGuidance_learning_phase_leg}に示すように，追従対象者に再帰反射テープを装着し，2DLiDARでそれを検出することで，ロボットが人に追従する．このとき，入力は2DLiDARの反射強度であり，出力はロボットのヨ―方向の角速度$\omega$となる．並行して，この行動とカメラの画像データを深層学習器に入力して，オンラインでend-to-end学習する．
 
   \begin{figure}[h]
     \centering
@@ -16,7 +16,7 @@
     \centering
     \includegraphics[width=4.5cm] {images/pdf/RobotGuidance_learning_phase_leg}
     \captionsetup{justification=raggedright} % キャプションを左寄せに
-    \caption{Wearing retroreflective tape}
+    \caption{Attachment retroreflective tape}
     \label{Fig:RobotGuidance_learning_phase_leg}
   \end{figure}
 
