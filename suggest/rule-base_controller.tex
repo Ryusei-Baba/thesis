@@ -1,82 +1,52 @@
 %!TEX root = ../thesis.tex
 
 \section{ルールベース制御器}
+  ルールベース制御器は，2DLiDARの反射強度を入力とし，式\eqref{eq:angular_velocity}よりロボットのヨ―方向の角速度を出力する．これにより，ロボットは最大反射強度の方向に追従する．ルールベース制御器からの出力を\tabref{tab:output_from_rule-based_controller}と\figref{Fig:Action from rule-based controller}に示す．制御器では，角速度$\omega$が0 \,[rad/s]になると，カメラの中心に追従対象者が来る．
 
-  学習フェーズで使用するルールベース制御器は，前節で述べた2DLiDARの反射強度を利用しており，最大反射強度の方向にロボットが追従する手法となっている．この制御器の出力は，ロボットのヨ―方向の角速度$\omega$の1つであり，角速度$\omega$が0 \,[rad/s] となるようにロボットを制御する．角速度$\omega$は，以下の式\eqref{eq:angular_velocity}で表され，$\theta_{\text{max}}$は最大検出角度で，$\theta$は人の位置を示す角度である．
+\vspace{-0.2cm}
+
+  \begin{table}[!h]
+    \centering
+    \begin{tabular}{lcl}
+        $\omega$ & ： & ロボットのヨ―方向の角速度 [rad/s] \\
+        $\theta_{\text{max}}$ & ： & 2DLiDARの最大検出角度 [rad] \\
+        $\theta$ & ： & 2DLiDARの反射強度が最大の角度 [rad] \\
+    \end{tabular}
+  \end{table}
+
+\vspace{-0.7cm}
 
   \begin{equation}
-    \omega[\text{rad/s}] = \frac{1}{\theta_{\text{max}}} \times \theta
-    \label{eq:angular_velocity}
-    \end{equation}
+      \omega = \frac{1}{\theta_{\text{max}}} \times \theta
+      \label{eq:angular_velocity}
+  \end{equation}
 
-  \begin{equation*}
-    \theta_{\text{max}} = 
-    \begin{cases}
-      \text{angle\_max}, & \text{if } |\text{angle\_max}| \geq |\text{angle\_min}| \\
-      \text{angle\_min}, & \text{if } |\text{angle\_min}| > |\text{angle\_max}|
-      \end{cases} 
-    \end{equation*}
-
-  \begin{equation*}
-    \text{angle\_max} \geq \theta \geq \text{angle\_min}
-    \label{eq:inequality}
-    \end{equation*}
-
-  ルールベース制御器からの出力を\tabref{tab:output_from_rule-based_controllers}に示す．
+\vspace{-0.5cm}
 
   \begin{table}[h]
-    \caption{Output from rule-based controllers}
-    \label{tab:output_from_rule-based_controllers}
+    \caption{Output from rule-based controller}
+    \label{tab:output_from_rule-based_controller}
+    \centering
     \begin{tabular}{cccc}
     \hline
-    Action & Control rule {[}rad{]} & Linear velocity {[}m/s{]} & Angular velocity {[}rad/s{]} \\ 
+    Control rule {[}rad{]} & Linear velocity {[}m/s{]} & Angular velocity {[}rad/s{]} \\ 
     \hline
     \hline
-    Turn Left & $\text{angle\_max} \geq \theta > 0$ & 0.2 & $1 \geq \omega > 0$ \\ 
-    Forward & $0$ & 0.2 & $0$ \\ 
-    Turn Right & $0 < \theta \leq \text{angle\_min}$ & 0.2 & $0 > \omega \geq -1$ \\ 
+    $\text{angle\_max} \geq \theta > 0$ & 0.2 & $1 \geq \omega > 0$ \\ 
+    $0$ & 0.2 & $0$ \\ 
+    $0 < \theta \leq \text{angle\_min}$ & 0.2 & $0 > \omega \geq -1$ \\ 
     \hline
     \end{tabular}
-    \end{table}
+  \end{table}
 
-\newpage
+  % \vspace{-0.5cm}
 
-  ルールベース制御器によるロボットの行動を\figref{Fig:RobotGuidance_learning_turn_left}と\figref{Fig:RobotGuidance_learning_turn_right}に示す．これは，RVizで部分的に可視化したもので，右足に装着した再帰反射テープに反応し，最大反射強度として周辺の色（黄色）とは異なる色（紫色）で表示している．
-  
-  \figref{Fig:RobotGuidance_learning_turn_left}の(a)は，2DLiDARの左前方にいる人（再帰反射テープ）を検出し，その角度に応じた角速度$\omega$の値が出力され，左旋回する．その結果，(b)のように角速度$\omega$はほぼ0 \,[rad/s]に近づき，直進する．
-
-  \figref{Fig:RobotGuidance_learning_turn_right}の(a)は，2DLiDARの右前方にいる人（再帰反射テープ）を検出し，その角度に応じた角速度$\omega$の値が出力され，右旋回する．その結果，(b)のように角速度$\omega$はほぼ0 \,[rad/s]に近づき，直進する．
-
-\begin{figure}[h]
-  \centering
-  \begin{minipage}[c]{65mm} 
-      \centering
-      \includegraphics[height=40mm]{images/pdf/RobotGuidance_learning_turn_left_(a)}
-      \subcaption{Turn left}
-  \end{minipage}
-  \begin{minipage}[c]{65mm} 
-      \centering
-      \includegraphics[height=40mm]{images/pdf/RobotGuidance_learning_turn_left_(b)}
-      \subcaption{Forward}
-  \end{minipage}
-  \caption{Turn left toward the retroreflective tape}
-  \label{Fig:RobotGuidance_learning_turn_left}
-\end{figure}
-
-\begin{figure}[h]
-  \centering
-  \begin{minipage}[c]{65mm} 
-      \centering
-      \includegraphics[height=40mm]{images/pdf/RobotGuidance_learning_turn_right_(a)}
-      \subcaption{Turn right}
-  \end{minipage}
-  \begin{minipage}[c]{65mm} 
-      \centering
-      \includegraphics[height=40mm]{images/pdf/RobotGuidance_learning_turn_right_(b)}
-      \subcaption{Forward}
-  \end{minipage}
-  \caption{Turn right toward the retroreflective tape}
-  \label{Fig:RobotGuidance_learning_turn_right}
-\end{figure}
+  \begin{figure}[h]
+    \centering
+    \includegraphics[height=6cm] {images/pdf/RobotGuidance_rule-based_controller}
+    \captionsetup{justification=raggedright} % キャプションを左寄せに
+    \caption{Action from rule-based controller}
+    \label{Fig:Action from rule-based controller}
+  \end{figure}
 
 \newpage

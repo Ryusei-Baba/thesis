@@ -2,7 +2,7 @@
 
 \section{テストフェーズ}
 
-  テストフェーズのシステムを\figref{Fig:RobotGuidance_following_system}に示す．このフェーズでは，学習フェーズで学習したモデルを用いる．つまり，2DLiDARの反射強度を入力としたルールベース制御器の出力ではなく，画像を入力とした深層学習器の出力がロボットの行動を決定する．
+  テストフェーズのシステムを\figref{Fig:RobotGuidance_following_system}に示す．このフェーズでは，学習フェーズで学習したモデルを用いる．つまり，2DLiDARの反射強度を入力としたルールベース制御器の出力ではなく，画像を入力とした深層学習器の出力がロボットの行動を決定する．そのため，再帰反射テープは必要でない（\figref{Fig:RobotGuidance_following_phase_leg}）．
 
   \vspace{0.5cm}
 
