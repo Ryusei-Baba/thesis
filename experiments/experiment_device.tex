@@ -2,11 +2,11 @@
 
 \section{実験装置}
 
-  本研究で使用した実験装置を\figref{Fig:RobotGuidance_experiment_device}に示す．ハードウェアは，T-frogプロジェクトのi-Cart\ mini\cite{t-flog}をベースとしたロボットである，ORNE-box\cite{orne-box1}\cite{orne-box2}を使用する．このロボットは，拡張性に優れており，センサの取り付け位置を自由に変更できる．そのため，カメラを上部のハンドル部分に，2DLiDARを下部の足元付近に設置した．PCの仕様を\tabref{tab:Laptop computer specifications}に示す．また，ソフトウェアはROSを使用して構築し，深層学習のフレームワークにはPyTorchを採用している．
+  本研究で使用した実験装置を\figref{Fig:RobotGuidance_experiment_device}に示す．ハードウェアは，T-frogプロジェクトのi-Cart\ mini\cite{t-flog}をベースとしたロボットである，ORNE-box\cite{orne-box1}\cite{orne-box2}を使用する．このロボットは，拡張性に優れており，センサの取り付け位置を自由に変更できる．そのため，カメラを上部のハンドル部分に，2DLiDARを下部の足元付近に設置した．PCの仕様を\tabref{tab:Laptop computer specifications}に示す．ソフトウェアは，ROSを使用して構築し，深層学習のフレームワークにはPyTorchを採用している．
 
   \begin{figure}[h]
     \centering
-    \includegraphics[keepaspectratio, scale=0.60] {images/pdf/RobotGuidance_experiment_device}
+    \includegraphics[width=12cm] {images/pdf/RobotGuidance_experiment_device}
     \captionsetup{justification=raggedright} % キャプションを左寄せに
     \caption{The developed system}
     \label{Fig:RobotGuidance_experiment_device}
@@ -24,9 +24,6 @@
     Computer & GALLERIA GCR2070RGF-QC-G \\
     OS   & Ubuntu 20.04 LTS                        \\ 
     ROS  & Noetic                                  \\ 
-    CPU  & Intel Core i7-9750H (4.5GHz/6コア/12スレッド) \\ 
-    GPU  & GeForce RTX 2070 Max-Q                         \\ 
-    DRAM & 16GB DDR4 (8GB × 2)                 \\ 
     \hline
     \end{tabular}
     \end{table}

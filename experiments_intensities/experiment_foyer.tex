@@ -1,12 +1,11 @@
-\subsection{学習する場所付近の反射強度}
+\section{学習する場所付近の反射強度}
 
-  学習フェーズで使用する場所を\figref{Fig:RobotGuidance_exp3_foyer}に示す．ここは，千葉工業大学津田沼キャンパス2号館3階のホワイエと呼ばれるスペースであり，中にはガラスや自動販売機が存在する．それぞれに対して反射強度を計測するのは大変なので，ホワイエをランダムに歩き回ることでデータを収集する．
-
-  計測した結果を\figref{Fig:Histogram of reflection intensity of foyer}に示す．収集したデータは1万個で，ホワイエには5000を超える反射強度の値は存在しないことがわかった．つまり，再帰反射テープが最大反射強度であり，ルールベース制御器が正常に機能すると，人追従行動生成が可能であることを確認した．
+  学習フェーズで使用する場所を\figref{Fig:RobotGuidance_exp3_foyer}に示す．ここは，千葉工業大学津田沼キャンパス2号館3階のホワイエと呼ばれる場所であり，中にはガラスや自動販売機が存在する．それぞれに対して反射強度を計測するのは大変なので，ホワイエをランダムに250秒間歩き回ることでデータを収集した．
+  計測した結果を\figref{Fig:Histogram of reflection intensity of foyer}に示す．平均値は約2102であり，分散は約676261であった．
 
   \begin{figure}[h]
     \centering
-    \includegraphics[keepaspectratio, scale=0.50] {images/pdf/RobotGuidance_exp3_foyer}
+    \includegraphics[width=7cm] {images/pdf/RobotGuidance_exp3_foyer}
     \captionsetup{justification=raggedright} % キャプションを左寄せに
     \caption{Measure the reflection intensity of foyer}
     \label{Fig:RobotGuidance_exp3_foyer}
