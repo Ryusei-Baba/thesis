@@ -15,18 +15,21 @@
 
 \subsection{end-to-end学習}
 
-  end-to-end学習は，\figref{Fig:about_end-to-end}に示すように，システムの入力から出力までの全体の処理を一つのニューラルネットワークで直接学習する機械学習手法である．この手法では，画像や音声などの特徴抽出や前処理の段階を人手で設計する必要がなく，データから直接目標のタスクを学習することができる．
-
-  \vspace{2cm}
+  end-to-end学習は，\figref{Fig:Structure of general machine learning}に示すような一般的な機械学習の構造とは異なり，\figref{Fig:about_end-to-end}に示すような，システムの入力から出力までの全体の処理を一つのニューラルネットワークで直接学習する機械学習手法である．この手法では，画像や音声などの特徴抽出や前処理の段階を人手で設計する必要がなく，データから直接目標のタスクを学習することができる．
 
   \begin{figure}[h]
     \centering
-    \includegraphics[keepaspectratio, scale=0.90] {images/pdf/RobotGuidance_about_end-to-end}
+    \includegraphics[keepaspectratio, scale=0.80] {images/pdf/RobotGuidance_about_general_structure}
+    \caption{Structure of general machine learning}
+    \label{Fig:Structure of general machine learning}
+  \end{figure}
+
+  \begin{figure}[h]
+    \centering
+    \includegraphics[keepaspectratio, scale=0.80] {images/pdf/RobotGuidance_about_end-to-end}
     \caption{Structure of end-to-end learning}
     \label{Fig:about_end-to-end}
   \end{figure}
-
-  \vspace{1cm}
 
 \subsection{ミニバッチ学習}
 
