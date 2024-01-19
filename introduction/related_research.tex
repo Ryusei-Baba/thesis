@@ -4,6 +4,8 @@
      Bojarskiら\cite{bojarski}は，カメラ画像と人が操作するステアリングの角度を用いて模倣学習を行うことで，自動車の自動運転に成功している．学習時のシステムを\figref{Fig:bojarski_train}に示す．学習時には，ドライバーが車を運転し，その際に取得したステアリングの角度とカメラ画像を組み合わせてend-to-end学習が行われる．
      これにより，学習後は，\figref{Fig:bojarski_test}に示ようにカメラ画像から直接，ステアリングの角度を出力するシステムになっている．すなわち，カメラ画像のみで自動運転を可能にしている．
      
+     \vspace{0.5cm}
+
      \begin{figure}[h]
           \centering
           \includegraphics[keepaspectratio, scale=1.0] {images/pdf/bojarski_train}
@@ -25,12 +27,29 @@
 
      \figref{Fig:bojarski_CNN}は，CNNが白線等のない未塗装道路においても，人が操作するステアリングの角度だけを教師信号として用い，有用な道路の特徴を学習したことを示している．なお，道路の輪郭を検出するような学習は明示的に行っていないことが述べられている．
 
+     \vspace{2cm}
+
      \begin{figure}[h]
           \centering
           \includegraphics[keepaspectratio, scale=0.80] {images/pdf/bojarski_CNN}
           \captionsetup{justification=raggedright} % キャプションを左寄せに
           \caption[How the CNN ``sees'' an unpaved road. Top: subset of the camera image sent to the CNN. Bottom left: Activation of the first layer feature maps. Bottom right: Activation of the second layer feature maps. This demonstrates that the CNN learned to detect useful road features on its own, i.e., with only the human steering angle as training signal. We never explicitly trained it to detect the outlines of roads.]{How the CNN ``sees'' an unpaved road. Top: subset of the camera image sent to the CNN. Bottom left: Activation of the first layer feature maps. Bottom right: Activation of the second layer feature maps. This demonstrates that the CNN learned to detect useful road features on its own, i.e., with only the human steering angle as training signal. We never explicitly trained it to detect the outlines of roads. (source: \cite{bojarski})}
           \label{Fig:bojarski_CNN}
+     \end{figure}
+
+\newpage
+
+     大島ら\cite{doog}は，協働運搬ロボット「サウザー」に取り付けられた一つの2DLiDARの入力によって，自動追従走行機能を実現している．ロボットの操作者はロボットの正面に立ち，追従スタートボタンを押すと追従ターゲットとして認識され，歩き出すとロボットはターゲットに追従して走行する．これは，ボタンが押された瞬間の正面一定エリアにある点群をクラスタリングし，正面に存在するクラスタを追従対象としてラベリングしている（\figref{Fig:oshima doog}）．
+     つまり，2DLiDARの入力のみで人追従行動を実現している．
+
+     \vspace{2cm}
+
+     \begin{figure}[h]
+          \centering
+          \includegraphics[keepaspectratio, scale=0.80] {images/pdf/oshima_doog}
+          \captionsetup{justification=raggedright} % キャプションを左寄せに
+          \caption[Example of point cloud plot for tracking target]{Example of point cloud plot for tracking target (source: \cite{doog})}
+          \label{Fig:oshima doog}
      \end{figure}
 
 \newpage

@@ -4,6 +4,8 @@
 
   ネットワークを\figref{Fig:RobotGuidance_network}に示す．これは，深層学習フレームワークであるPyTorch\cite{pytorch}を使用し，CNNをベースとしている．具体的には，入力層，畳み込み層3，全結合層2，出力層の7層で構成している．深層学習器は，縮小された画像と選択された行動を0.2秒周期で収集して学習する．これを1stepとする．使用したハイパーパラメータを\tabref{tab:Parameters of network configured with pytorch}に示す．
 
+  \vspace{1cm}
+
   \begin{figure}[h]
     \centering
     \includegraphics[keepaspectratio, scale=0.60] {images/pdf/RobotGuidance_network}
@@ -11,11 +13,13 @@
     \label{Fig:RobotGuidance_network}
   \end{figure}
 
+  \vspace{0.5cm}
+
   \begin{table}[hbtp]
     \caption{Parameters of network configured with PyTorch}
     \label{tab:Parameters of network configured with pytorch}
     \centering
-    \begin{tabular}{cc}
+    \begin{tabular}{c||l}
       \hline
       Input data & Image(64x48 pixels, RGB channels) \\
       Optimizer & Adam($alpha = 0.001, beta1 = 0.9, beta2 =  0.999, eps = 1e^{-2}$)\\

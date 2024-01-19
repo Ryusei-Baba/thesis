@@ -17,6 +17,8 @@
 
   end-to-end学習は，\figref{Fig:Structure of general machine learning}に示すような一般的な機械学習の構造とは異なり，\figref{Fig:about_end-to-end}に示すような，システムの入力から出力までの全体の処理を一つのニューラルネットワークで直接学習する機械学習手法である．この手法では，画像や音声などの特徴抽出や前処理の段階を人手で設計する必要がなく，データから直接目標のタスクを学習することができる．
 
+  \vspace{0.5cm}
+
   \begin{figure}[h]
     \centering
     \includegraphics[keepaspectratio, scale=0.80] {images/pdf/RobotGuidance_about_general_structure}
@@ -35,7 +37,7 @@
 
   ミニバッチ学習は，データをミニバッチという小さなグループに分割してモデルを学習するアプローチである．通常，データセット全体を一度に処理するバッチ学習と，一つずつのデータを処理するオンライン学習の中間に位置する．
 
-  \vspace{2cm}
+  \vspace{1cm}
 
   本研究は，オンライン（タスクを行いながらデータを収集）で学習（end-to-end学習とミニバッチ学習を組み合わせた学習）を行う．
 
