@@ -1,15 +1,16 @@
 %!TEX root = ../thesis.tex
 
-\section{背景}
-\subsection{RoboCup}
+本研究では，\Fig{fig:proposed}に示すように，高コストなゼロショットセグメンテーション処理と軽量な物体追跡処理を組み合わせる手法を提案する．これは Tracking-by-Detection の考え方を応用したものであるが，以下の点が異なる．
 
-\begin{figure}[hbtp]
-  \centering
- \includegraphics[keepaspectratio, scale=0.8]
-      {images/RaspberryPiMouse.png}
- \caption{Example}
- \label{Fig:Example}
+第一に，SORTなどが毎フレームの物体検出を前提とするのに対し，本アプローチではゼロショットモデルから成る認識処理を意図的に間引いて実行する．これは，大規模基盤モデルの高い認識性能を維持しつつ，システム全体のスループットを確保するためである．
+
+第二に，物体検出が行われないフレームでは，追跡処理が出力を補間する役割を担う．これにより，高周波な状態更新が求められるモビリティの制御タスクに対応できる可能性がある．
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.0\linewidth]{images/pdf/proposed_method.pdf}
+\caption{Overview of the proposed method}
+\label{fig:proposed}
 \end{figure}
 
-\subsubsection{etc...}
 \newpage
