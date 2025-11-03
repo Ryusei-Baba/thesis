@@ -38,21 +38,9 @@
 
 \begin{figure}[H]
 \centering
-\begin{subfigure}{\textwidth}
-\centering
-\includegraphics[width=1.0\textwidth]{images/pdf/traditional_object_detection.pdf}
+\includegraphics[width=1.0\linewidth]{images/pdf/traditional_object_detection.pdf}
 \caption{Traditional object detection.}
 \label{fig:traditional_detection}
-\end{subfigure}
-
-\begin{subfigure}{\textwidth}
-\centering
-\includegraphics[width=1.0\textwidth]{images/pdf/zero-shot_object_detection.pdf}
-\caption{Zero-shot object detection.}
-\label{fig:zeroshot_detection}
-\end{subfigure}
-\caption{Comparison of traditional object detection and zero-shot object detection.}
-\label{fig:detection}
 \end{figure}
 
 \subsection{ゼロショット物体検出}
@@ -61,6 +49,13 @@
 この技術の核心は，物体の視覚的特徴と言語的記述を共通の埋め込み空間で対応付けることにある．画像はCNNまたはVision Transformerにより処理され，多スケールの特徴マップが生成される．テキストプロンプトはBERTなどの言語モデルによりエンコードされ，言語特徴ベクトルに変換される．視覚特徴と言語特徴は，cross-attention機構により相互作用する．言語特徴の各単語が画像特徴の各位置に対してattention重みを計算し，テキストプロンプト全体に対応する画像領域が特定される．
 
 推論時には，ユーザーが任意のテキストプロンプトを入力でき，単一物体の記述から属性を含む記述，関係性を含む記述まで対応可能である．信頼度スコアが閾値（通常0.3～0.5）を超える検出のみが最終結果として採用される．この柔軟性により，事前に定義されていない任意の物体カテゴリに対して即座に対応できる．
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.0\linewidth]{images/pdf/zero-shot_object_detection.pdf}
+\caption{Zero-shot object detection.}
+\label{fig:zeroshot_detection}
+\end{figure}
 
 % ------------------------------------------------
 
