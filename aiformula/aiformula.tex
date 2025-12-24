@@ -4,7 +4,7 @@
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.95\linewidth]{images/pdf/ai-formula_mobility.pdf}
+\includegraphics[width=1.0\linewidth]{images/pdf/ai-formula_mobility_resize.pdf}
 \caption{AI-Formula mobility}
 \label{fig:mobility}
 \end{figure}
@@ -35,6 +35,8 @@ SAM Model & sam2.1\_hiera\_small \\
 \label{fig:cource}
 \end{figure}
 
+\newpage
+
 提案手法によるセグメンテーションの結果を用いて，消失点ナビゲーションへ応用する実験を行う．ナビゲーションでは，最初に提案手法を用いてセグメンテーションされた白線を抽出する．次に，ハフ変換により2本の白線を求め，その消失点を算出する．最後に，算出した消失点が画像中心に位置するよう，PID制御に基づきモビリティのヨー角速度を制御することで白線の消失点に向かって進むようにする．これによって，モビリティはレーンの白線に沿って経路を走行する．本手順による処理結果を\Fig{fig:target}に示す．図中では，ハフ変換の出力を青線で，消失点を赤点で示している．
 
 \begin{figure}[H]
@@ -44,6 +46,8 @@ SAM Model & sam2.1\_hiera\_small \\
 \label{fig:target}
 \end{figure}
 
+\newpage
+
 提案手法による物体検出および物体追跡の結果を用いて，障害物検出・停止タスクへ応用する実験を行う．実験では，\Fig{fig:bbox}の赤いパイロンを障害物とする．モビリティがパイロンに接近し，検出したBBoxの面積が事前に設定したしきい値を超えた場合に自動停止させる．しきい値は，実験開始前にモビリティの5m手前にパイロンを置き，そのときに検出されるBBoxの面積を計測して設定した．
 
 \begin{figure}[H]
@@ -52,6 +56,8 @@ SAM Model & sam2.1\_hiera\_small \\
 \caption{Obstacle detection using the BBox area as a threshold}
 \label{fig:bbox}
 \end{figure}
+
+\newpage
 
 \section{実環境での実験結果}
 本実験では，時速6 [km/h]で走行する自律走行モビリティを用いて，消失点ナビゲーションおよび障害物検出・停止タスクを実環境で行い，その適用可能性を調査した．その結果，モビリティは指定コースを逸脱することなく走行し，障害物手前で停止した．つまり，一例ではあるが，提案手法により事前学習なく環境を認識してコースを走行・停止できることを確認した．以下に，各タスクにおけるモビリティの挙動を詳述する．

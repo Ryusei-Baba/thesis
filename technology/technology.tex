@@ -68,13 +68,13 @@
 \subsection{従来のセグメンテーションとその課題}
 セグメンテーションには，画像全体を意味的なクラスに分割するセマンティックセグメンテーションと，個々の物体インスタンスを区別するインスタンスセグメンテーションがある．従来手法であるFCN，U-Net，Mask R-CNNなどは，医療画像解析や自動運転などの分野で高精度な結果を達成してきた．
 
-しかし，物体検出と同様に，従来のセグメンテーション手法も固定カテゴリに制約される．学習データに含まれないカテゴリに対しては対応できず，新しいカテゴリを追加するには大量のピクセルレベルのアノテーションが必要となる（\Fig{fig:segmentation_annotation}）．ピクセル単位のラベル付けは矩形のBBoxよりもはるかに時間とコストがかかるため，この制約はより深刻な問題となる．
+しかし，物体検出と同様に，従来のセグメンテーション手法も固定カテゴリに制約される．学習データに含まれないカテゴリに対しては対応できず，新しいカテゴリを追加するには大量のピクセルレベルのアノテーションが必要となる（\Fig{fig:annotation}）．ピクセル単位のラベル付けは矩形のBBoxよりもはるかに時間とコストがかかるため，この制約はより深刻な問題となる．
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.55\linewidth]{images/pdf/segmentation_annotation.pdf}
+\includegraphics[width=1.0\linewidth]{images/pdf/annotation.pdf}
 \caption{Example of creating a dataset for semantic segmentation.}
-\label{fig:segmentation_annotation}
+\label{fig:annotation}
 \end{figure}
 
 \newpage
@@ -91,6 +91,15 @@
 \label{fig:promptable_seg_model}
 \end{figure}
 
-実用的なアプローチとして，ゼロショット物体検出とプロンプタブルセグメンテーションを統合する方法がある．まず，テキストプロンプトから物体の位置を検出し，その検出結果をセグメンテーションのプロンプトとして利用する．この2段階の処理により，テキストのみから任意の物体の精密なセグメンテーションが可能となる．従来手法では不可能だった，未知の物体カテゴリに対する対応が実現される．
+\newpage
+
+実用的なアプローチとして，ゼロショット物体検出とプロンプタブルセグメンテーションを統合する方法がある(\Fig{fig:text_promptable_seg_model})．まず，テキストプロンプトから物体の位置を検出し，その検出結果をセグメンテーションのプロンプトとして利用する．この2段階の処理により，テキストのみから任意の物体の精密なセグメンテーションが可能となる．従来手法では不可能だった，未知の物体カテゴリに対する対応が実現される．
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.0\linewidth]{images/pdf/text_promptable_seg_model.pdf}
+\caption{Prompted zero-shot segmentation.}
+\label{fig:text_promptable_seg_model}
+\end{figure}
 
 \newpage
