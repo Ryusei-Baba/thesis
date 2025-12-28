@@ -1,12 +1,19 @@
 %!TEX root = ../thesis.tex
 
-実環境への適用可能性を調査するため，自律走行競技会AI-Formula \cite{ref8}における消失点ナビゲーションおよび障害物検出・停止タスクへ提案手法の応用を試みた．\Fig{fig:mobility}にAI-Formulaのモビリティを示す．モビリティには，ステレオカメラ，GNSS，IMUが搭載されている．本競技会では，実環境におけるリアルタイム認識と制御が要求される実践的な評価環境が提供されている．
+実環境への適用可能性を調査するため，自律走行競技会AI-Formula \cite{ref8}における消失点ナビゲーションおよび障害物検出・停止タスクへ提案手法の応用を試みた．\Fig{fig:mobility}にAI-Formulaのモビリティを示す．モビリティには，ステレオカメラ，GNSS，IMUが搭載されている．\Fig{fig:aiformula_course}にAI-Formulaのコースを示す．コースは，白線や横断歩道などの情報があり，比較的平坦な地形となっている．本競技会では，実環境におけるリアルタイム認識と制御が要求される実践的な評価環境が提供されている．
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=1.0\linewidth]{images/pdf/ai-formula_mobility_resize.pdf}
-\caption{AI-Formula mobility}
+\caption{AI-Formula mobility.}
 \label{fig:mobility}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.0\linewidth]{images/pdf/aiformula_cource.pdf}
+\caption{AI-Formula course.}
+\label{fig:aiformula_course}
 \end{figure}
 
 \section{実環境での実験方法}
@@ -62,9 +69,9 @@ SAM Model & sam2.1\_hiera\_small \\
 \section{実環境での実験結果}
 本実験では，時速6 [km/h]で走行する自律走行モビリティを用いて，消失点ナビゲーションおよび障害物検出・停止タスクを実環境で行い，その適用可能性を調査した．その結果，モビリティは指定コースを逸脱することなく走行し，障害物手前で停止した．つまり，一例ではあるが，提案手法により事前学習なく環境を認識してコースを走行・停止できることを確認した．以下に，各タスクにおけるモビリティの挙動を詳述する．
 
-\Fig{fig:follow}に，GNSSデータに基づき作成したモビリティの走行軌跡を示す．指定した約20mのコースを逸脱することなく，一定速度で走行することを確認した．ただし，部分的に蛇行する挙動も見られた．これは，システムの処理負荷増大による制御周波数の低下が原因と考えられる．認識処理のみでは2.15 FPSであった処理速度が，消失点ナビゲーションなどを含むシステム全体では低下したため，この処理遅延が蛇行につながったおそれがある．
+\newpage
 
-\Fig{fig:stop}に，障害物検出・停止タスクの結果を示す．事前に設定した目標停止距離5 [m]に対し，モビリティは障害物の約3.4 [m]手前で停止し，目標と1.6 [m]の誤差が生じた．これは，モビリティの制動距離に加え，システム全体の処理遅延も影響していると考えられる．
+\Fig{fig:follow}に，GNSSデータに基づき作成したモビリティの走行軌跡を示す．指定した約20mのコースを逸脱することなく，一定速度で走行することを確認した．ただし，部分的に蛇行する挙動も見られた．これは，システムの処理負荷増大による制御周波数の低下が原因と考えられる．認識処理のみでは2.15 FPSであった処理速度が，消失点ナビゲーションなどを含むシステム全体では低下したため，この処理遅延が蛇行につながったおそれがある．
 
 \begin{figure}[H]
 \centering
@@ -73,7 +80,9 @@ SAM Model & sam2.1\_hiera\_small \\
 \label{fig:follow}
 \end{figure}
 
-\vspace{1cm}
+\newpage
+
+\Fig{fig:stop}に，障害物検出・停止タスクの結果を示す．事前に設定した目標停止距離5 [m]に対し，モビリティは障害物の約3.4 [m]手前で停止し，目標と1.6 [m]の誤差が生じた．これは，モビリティの制動距離に加え，システム全体の処理遅延も影響していると考えられる．
 
 \begin{figure}[H]
 \centering
