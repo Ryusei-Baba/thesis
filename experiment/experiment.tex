@@ -2,11 +2,11 @@
 
 \section{性能評価の方法}
 本章では，提案手法の基本的な性能を明らかにするための評価実験について述べる．この実験の目的は，従来手法と比較して提案手法がどの程度処理速度を向上させるか，またその際にどの程度の検出位置の正確度を維持できるかを定量的に評価することである．
-実験環境の詳細を\Table{tab:env_evaluation}に示す．コンピュータは後述のモビリティの制御に用いる NVIDIA Jetson AGX Orin (32GB) を使用し，MOT17データセット\cite{ref9}を使用した．また，テキストプロンプトには“pedestrian”を指定した．
+実験環境の詳細を\Table{tab:env_evaluation}に示す．コンピュータは後述のモビリティの制御に用いる NVIDIA Jetson AGX Orin (32GB) を使用し，MOT17データセット\cite{mot16}を使用した．また，テキストプロンプトには“pedestrian”を指定した．
 
 \begin{table}[htbp]
 \centering
-\caption{Experimental environment for evaluation}
+\caption{Experimental environment for evaluation.}
 \label{tab:env_evaluation}
 \begin{tabular}{ll}
 \hline
@@ -27,7 +27,7 @@ SAM Model & sam2.1\_hiera\_small \\
 
 \begin{table}[htbp]
 \centering
-\caption{Experimental results for evaluation}
+\caption{Experimental results for evaluation.}
 \label{tab:results}
 \begin{tabular}{lcccc}
 \hline
@@ -42,7 +42,7 @@ Proposed (Redetection interval: 2.0s) & 2.15 & 0.707 \\
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.85\linewidth]{images/pdf/evaluation.pdf}
-\caption{Comparison of Ground Truth, Lang-SAM, and the Proposed Method}
+\caption{Comparison of Ground Truth, Lang-SAM, and the Proposed Method. [source: \cite{lang_sam_tracker}]}
 \label{fig:results}
 \end{figure}
 

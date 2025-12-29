@@ -1,7 +1,7 @@
 %!TEX root = ../thesis.tex
 
 \section{背景}
-近年，大規模基盤モデルの発展により，画像認識分野は大きな進歩を遂げている．特に，Transformer アーキテクチャに基づく視覚言語統合モデルの登場により，従来の教師あり学習では困難であった物体認識が可能となった．例えば，テキストプロンプトから物体位置を特定する Grounding DINO \cite{ref2} や，プロンプトに応じて物体を高精度にセグメンテーションするSegment Anything Model (SAM) \cite{ref1} が挙げられる．
+近年，大規模基盤モデルの発展により，画像認識分野は大きな進歩を遂げている．特に，Transformer アーキテクチャに基づく視覚言語統合モデルの登場により，従来の教師あり学習では困難であった物体認識が可能となった．例えば，テキストプロンプトから物体位置を特定する Grounding DINO \cite{grounding_dino} や，プロンプトに応じて物体を高精度にセグメンテーションするSegment Anything Model (SAM) \cite{sam} が挙げられる．
 
 Grounding DINO は，BERT由来の言語エンコーダと画像特徴を融合することで，任意の物体カテゴリに対するゼロショット物体検出を実現している．このモデルは，テキストと画像の両方の情報を統合的に処理することで，事前に定義されていない物体カテゴリであっても，自然言語による指示のみで検出が可能となる．\Fig{fig:gdino} に示されるように，Grounding DINOは多様な物体に対して高精度なバウンディングボックスを生成し，テキストプロンプトに応じた物体検出を実現している．この図からは，モデルが複雑なシーン内の複数物体を識別し，位置を特定できることが確認できる．
 
@@ -13,7 +13,7 @@ Grounding DINO は，BERT由来の言語エンコーダと画像特徴を融合�
 
 \centering
 \includegraphics[width=1.0\linewidth]{images/pdf/gdino.pdf}
-\caption{Visualizations of model outputs. (Source: \cite{ref2})}
+\caption{Visualizations of model outputs. (Source: \cite{grounding_dino})}
 \label{fig:gdino}
 \end{figure}
 
@@ -26,13 +26,13 @@ Grounding DINO は，BERT由来の言語エンコーダと画像特徴を融合�
 \begin{figure}[H]
 \centering
 \includegraphics[width=1.0\linewidth]{images/pdf/sam.pdf}
-\caption{Example images with overlaid masks from our newly introduced dataset, SA-1B. SA-1B contains 11M diverse, high-resolution, licensed, and privacy protecting images and 1.1B high-quality segmentation masks. These masks were annotated fully automatically by SAM, and as we verify by human ratings and numerous experiments, are of high quality and diversity. We group images by number of masks per image for visualization (there are ∼100 masks per image on average). (Source: \cite{ref1})}
+\caption{Example images with overlaid masks from our newly introduced dataset, SA-1B. SA-1B contains 11M diverse, high-resolution, licensed, and privacy protecting images and 1.1B high-quality segmentation masks. These masks were annotated fully automatically by SAM, and as we verify by human ratings and numerous experiments, are of high quality and diversity. We group images by number of masks per image for visualization (there are ∼100 masks per image on average). (Source: \cite{sam})}
 \label{fig:sam}
 \end{figure}
 
 \newpage
 
-この２つのモデルを組み合わせたLanguage Segment-Anything（Lang-SAM）\cite{ref3} は，自然言語の指示のみで対象を切り出すゼロショットセグメンテーションを可能にし，事前学習なしに多様な物体クラスへの対応を実現している．Lang-SAMの実行例を\Fig{fig:langsam}に示す．画像と自然言語を入力するだけで，物体検出の結果やセグメンテーションの結果が出力される．
+この２つのモデルを組み合わせたLanguage Segment-Anything（Lang-SAM）\cite{lang_sam} は，自然言語の指示のみで対象を切り出すゼロショットセグメンテーションを可能にし，事前学習なしに多様な物体クラスへの対応を実現している．Lang-SAMの実行例を\Fig{fig:langsam}に示す．画像と自然言語を入力するだけで，物体検出の結果やセグメンテーションの結果が出力される．
 
 \begin{figure}[H]
 
@@ -49,7 +49,7 @@ Grounding DINO は，BERT由来の言語エンコーダと画像特徴を融合�
 \newpage
 
 \section{関連研究}
-システム全体の処理速度が遅くなるという問題に対する有効なアプローチとして，高コストな検出と軽量な追跡を組み合わせるTracking-by-Detectionのパラダイムが知られている．このパラダイムは，毎フレーム実行される高精度な物体検出の結果を，軽量な追跡アルゴリズムでフレームをまたいで関連付けることにより，物体のIDを維持し，安定した追跡をリアルタイムで実現するものである．その代表的な手法に SORT (Simple Online and Realtime Tracking) \cite{ref5} が存在する．SORT は，カルマンフィルタによる物体の運動予測とハンガリアンアルゴリズムにより高速かつ高精度な多物体追跡を実現している．
+システム全体の処理速度が遅くなるという問題に対する有効なアプローチとして，高コストな検出と軽量な追跡を組み合わせるTracking-by-Detectionのパラダイムが知られている．このパラダイムは，毎フレーム実行される高精度な物体検出の結果を，軽量な追跡アルゴリズムでフレームをまたいで関連付けることにより，物体のIDを維持し，安定した追跡をリアルタイムで実現するものである．その代表的な手法に SORT (Simple Online and Realtime Tracking) \cite{sort} が存在する．SORT は，カルマンフィルタによる物体の運動予測とハンガリアンアルゴリズムにより高速かつ高精度な多物体追跡を実現している．
 
 \section{研究目的}
 本研究では，このTracking-by-Detectionの考え方を応用し，言語指示によるゼロショットセグメンテーションのリアルタイム性を向上するために，高コストな物体検出処理の頻度を削減し，その間を軽量な物体追跡で補間する手法を提案する．本手法を時速 6 [km/h] で走行する自律走行モビリティの消失点ナビゲーションおよび障害物検出・停止タスクへ応用し，実環境への適用可能性を調査する．
