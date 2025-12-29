@@ -1,0 +1,31 @@
+%!TEX root = ../thesis.tex
+
+\section{セグメンテーションによる処理遅延の問題}
+4章で述べたシステム構成は，リアルタイム性を向上するゼロショットセグメンテーションを実現する一方で，処理遅延が大きいという課題がある．特に，SAM2は大規模なモデルであり，毎フレーム実行するとリアルタイム性が損なわれる可能性がある．この問題を解決するために，本章ではシステム構成の改良について検討する．
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.0\linewidth]{images/pdf/system_problem.pdf}
+\caption{Problem of processing delay due to segmentation.}
+\label{fig:system_problem}
+\end{figure}
+
+\newpage
+
+\section{新しいシステム構成の概要}
+本節では，さらなる高速化に向けたシステム構成について述べる．\Fig{fig:system_ver2}に示すように，本手法は，(1) 物体検出およびセグメンテーション(2) 物体追跡，の 2 つのモジュールで構成される．以下にそれぞれのモジュールに関して述べる．
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.0\linewidth]{images/pdf/system_ver2.pdf}
+\caption{Overview of the improved system.}
+\label{fig:system_ver2}
+\end{figure}
+
+\newpage
+
+\subsection{物体検出およびセグメンテーションモジュール}
+テキストプロンプトに基づき，Grounding DINOを用いて物体検出を行う．これによって，テキストに対応するバウンディングボックスが生成される．さらに，検出されたBBoxに対し，SAM2を用いてセグメンテーションマスクを生成する．この処理は，毎フレームではなく一定間隔で実行し，計算負荷が過大とならないようにする．
+
+\subsection{物体追跡モジュール}
+後続のフレームでは，毎フレームGrounding DINOやSAM2を実行する代わりに，物体追跡でBBoxとPointsを更新する．まず，前フレームのセグメンテーション内でShi-Tomasi法 に基づき画像特徴点を抽出する．次に，抽出した特徴点群をLucas-Kanade法 に基づくピラミッドオプティカルフローで追跡し，その移動ベクトルの中央値を算出する．このベクトルを用いてBBoxの位置と大きさを更新する．以上の一連の処理を繰り返し実行する．これらの手法は，標準的かつ計算効率に優れていることから，特徴点追跡に採用した．これにより，検出とセグメンテーション，追跡までの一連の処理を行う．また，追跡した特徴点群を膨張または複製することで，セグメンテーションマスクのように扱うことが可能である．
