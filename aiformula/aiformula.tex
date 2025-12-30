@@ -1,6 +1,6 @@
 %!TEX root = ../thesis.tex
 
-実環境への適用可能性を調査するため，自律走行競技会AI-Formula \cite{ref8}における消失点ナビゲーションおよび障害物検出・停止タスクへ提案手法の応用を試みた．\Fig{fig:mobility}にAI-Formulaのモビリティを示す．モビリティには，ステレオカメラ，GNSS，IMUが搭載されている．\Fig{fig:aiformula_course}にAI-Formulaのコースを示す．コースは，白線や横断歩道などの情報があり，比較的平坦な地形となっている．本競技会では，実環境におけるリアルタイム認識と制御が要求される実践的な評価環境が提供されている．
+実環境への適用可能性を調査するため，自律走行競技会AI-Formula \cite{aiformula}における消失点ナビゲーションおよび障害物検出・停止タスクへ提案手法の応用を試みた．\Fig{fig:mobility}にAI-Formulaのモビリティを示す．モビリティには，ステレオカメラ，GNSS，IMUが搭載されている．\Fig{fig:aiformula_course}にAI-Formulaのコースを示す．コースは，白線や横断歩道などの情報があり，比較的平坦な地形となっている．本競技会では，実環境におけるリアルタイム認識と制御が要求される実践的な評価環境が提供されている．
 
 \begin{figure}[H]
 \centering
@@ -28,7 +28,7 @@
 Computer & NVIDIA Jetson AGX Orin 32GB \\
 Middleware & ROS 2 Humble \\
 Input Image & 480x300 \\
-Input Text & "white line. road. red pylon." \\
+Input Text & ``white line. road. red pylon.'' \\
 Grounding DINO & grounding-dino-base \\
 SAM Model & sam2.1\_hiera\_small \\
 \hline
@@ -64,12 +64,12 @@ SAM Model & sam2.1\_hiera\_small \\
 \label{fig:bbox}
 \end{figure}
 
-\newpage
+% \newpage
 
 \section{実環境での実験結果}
 本実験では，時速6 [km/h]で走行する自律走行モビリティを用いて，消失点ナビゲーションおよび障害物検出・停止タスクを実環境で行い，その適用可能性を調査した．その結果，モビリティは指定コースを逸脱することなく走行し，障害物手前で停止した．つまり，一例ではあるが，提案手法により事前学習なく環境を認識してコースを走行・停止できることを確認した．以下に，各タスクにおけるモビリティの挙動を詳述する．
 
-\newpage
+% \newpage
 
 \Fig{fig:follow}に，GNSSデータに基づき作成したモビリティの走行軌跡を示す．指定した約20mのコースを逸脱することなく，一定速度で走行することを確認した．ただし，部分的に蛇行する挙動も見られた．これは，システムの処理負荷増大による制御周波数の低下が原因と考えられる．認識処理のみでは2.15 FPSであった処理速度が，消失点ナビゲーションなどを含むシステム全体では低下したため，この処理遅延が蛇行につながったおそれがある．
 

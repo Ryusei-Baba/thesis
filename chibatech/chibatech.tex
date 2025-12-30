@@ -1,7 +1,7 @@
 %!TEX root = ../thesis.tex
 
 \section{キャンパス内での実験方法}
-本節では,実モビリティを用いたキャンパス内での実験方法について述べる．本実験では,改良したシステムの適用可能性を調査するために,実際のキャンパス環境での走行実験を行う．以下に,実験装置, 実験環境, 実験手順について述べる．
+本節では,実モビリティを用いたキャンパス内での実験方法について述べる．本実験では,改良したシステムの適用可能性を調査するために,千葉工業大学のキャンパス環境での走行実験を行う．以下に,実験装置, 実験環境, 実験手順について述べる．
 
 \subsection{実験装置}
 実験装置には，\Fig{fig:mobility}で示したように，AI-Formulaモビリティを使用する．モビリティには，NVIDIA Jetson AGX Orinを搭載し，改良したシステムを実行するための計算資源を提供する．また，前方の環境認識のために，ステレオカメラが搭載されている．
@@ -9,7 +9,7 @@
 \newpage
 
 \subsection{実験環境}
-実験環境には，千葉工業大学キャンパスの２号館周りの通路を使用する\Fig{fig:chibatech_cource}．この環境は，1周約？？？mの屋外であり，様々な照明条件や背景が存在する．また，歩行者や障害物が存在する．
+実験環境には，千葉工業大学キャンパスの２号館周りの通路を使用する（\Fig{fig:chibatech_cource}）．この環境は，1周約？？？mの屋外環境であり，様々な照明条件や背景が存在する．また，歩行者や障害物が存在する．
 
 \begin{figure}[H]
 \centering
@@ -19,6 +19,39 @@
 \end{figure}
 
 \subsection{実験手順}
-実験手順は以下の通りである．まず，モビリティをスタート地点に配置し，ターゲットとなる被験者に対してテキストプロンプトを設定する．次に，モビリティを起動し，被験者が通路を歩行する際に，モビリティが被験者を追従するように制御する．実験中，モビリティの位置情報やカメラ映像，システムの処理ログを記録する．最後に，モビリティを停止し，データを収集する．この手順を複数回繰り返し，様々な条件下でのデータを取得する．
+実験手順は以下の通りである．まず，モビリティをスタート地点に配置し，ターゲットとなる被験者に対してテキストプロンプトを設定する．次に，モビリティを起動し，事前に設定したテキストプロンプトと画像を前章で述べたシステムに入力する．その出力（BBox, Points）に対して，モビリティが被験者を追従するようなルールベース制御器により制御する．ルールベース制御器は，BBoxやPointsが画像の中央に位置するように制御を行う．このときのモビリティの速度は？？？m/sに設定する．被験者は，モビリティの前方を一定の速度で歩行し，モビリティが被験者を追従できるかを確認する．また，実験環境の詳細は，\Table{tab:experiment_environment}に示す通りである．テキストプロンプトには，“person in front.”を指定し，被験者の検出および追跡に用いた．
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.0\linewidth]{images/pdf/experiment_system.pdf}
+\caption{System used in the experiment.}
+\label{fig:experiment_system}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\caption{An experimental environment for campus experiment}
+\label{tab:experiment_environment}
+\begin{tabular}{ll}
+\hline
+Computer & NVIDIA Jetson AGX Orin 32GB \\
+Middleware & ROS 2 Humble \\
+Input Image & 480x300 \\
+Input Text & "person in front." \\
+Grounding DINO & grounding-dino-base \\
+SAM Model & sam2.1\_hiera\_small \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{キャンパス内での実験結果}
+本節では,実モビリティを用いたキャンパス内での実験結果について述べる．実験は，晴天の日中に行われ，モビリティが被験者を追従する様子を観察した．実験の様子を\Fig{fig:chibatech_result}に示す．予定です→「図中では，モビリティが被験者を追従している様子が確認できる．また，モビリティは被験者の動きに対して適切に反応し，指定したコースを逸脱することなく１周することができた．FPSは，？？？で従来手法の0.79よりも？？？倍改善した．」
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.0\linewidth]{images/pdf/dummy2.pdf}
+\caption{Experiment result in Chiba Institute of Technology campus.}
+\label{fig:chibatech_result}
+\end{figure}
 
 \newpage
