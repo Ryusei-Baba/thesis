@@ -8,16 +8,8 @@
   {--- 自律走行モビリティにおける認識・判断タスクへの応用 ---}
 \end{center}
 \vspace{1.0zh}
-%
 
-% 自然言語の指示のみで対象を切り出すゼロショットセグメンテーションは,処理を高頻度で繰り返すとシステム全体の処理速度が遅くなる問題があった.
-
-% 本研究では,言語指示によるゼロショットセグメンテーションのリアルタイム性を向上するために,高コストな物体検出処理の頻度を削減し,その間を軽量な物体追跡で補間する手法を提案する.
-
-% 本手法を自律走行モビリティにおける認識・判断タスクへ応用し,実環境への適用可能性を調査する.
-
-% ここに和文の概要を書く.一段落目に背景と問題提起,二段落目に本研究の目的と手法,三段落目に実験内容と結果,四段落目に結論を書く
-近年，自然言語の指示に基づき対象を切り出すゼロショットセグメンテーション技術が注目されている．しかし，大規模な基盤モデルを用いるこれらの技術は，高頻度で処理を繰り返すとシステム全体の処理速度が遅くなる問題がある．本研究では，ゼロショットセグメンテーションのリアルタイム性を向上するために，高コストな物体検出処理の頻度を削減し，その間を軽量な物体追跡で補間する手法を提案する．具体的には，テキストプロンプトに基づきGrounding DINOで物体検出を行い，SAM2でセグメンテーションマスクを生成する．その後のフレームでは，Shi-Tomasi法に基づき特徴点を抽出し，Lucas-Kanade法に基づくピラミッドオプティカルフローで追跡することで，物体の位置と大きさを更新する．これにより，検出とセグメンテーションの処理頻度を削減し，システム全体のスループットを向上させる．さらに，本手法を自律走行モビリティにおける認識・判断タスクへ応用し，実環境への適用可能性を調査する．AI-Formulaにおける消失点ナビゲーションおよび障害物検出・停止タスクやキャンパス内での人追従実験を通じて，提案手法が実モビリティに適用可能か調査する．本研究の成果は，リアルタイムな認識が求められる様々な応用分野に貢献することが期待される．
+近年，自然言語の指示に基づき対象を切り出すゼロショットセグメンテーション技術が注目されている．しかし，大規模な基盤モデルを用いるこれらの技術は，高頻度で処理を繰り返すとシステム全体の処理速度が遅くなる問題がある．本研究では，ゼロショットセグメンテーションのリアルタイム性を向上するために，高コストな物体検出処理の頻度を削減し，その間を軽量な物体追跡で補間する手法を提案する．具体的には，テキストプロンプトに基づきGrounding DINOで物体検出を行い，SAM2でセグメンテーションマスクを生成する．その後のフレームでは，Shi-Tomasi法に基づき特徴点を抽出し，Lucas-Kanade法に基づくピラミッドオプティカルフローで追跡することで，物体の位置と大きさを更新する．これにより，検出とセグメンテーションの処理頻度を削減し，システム全体のスループットを向上させる．さらに，本手法を自律走行モビリティにおける認識・判断タスクへ応用し，実環境への適用可能性を調査する．実環境における消失点ナビゲーションおよび障害物検出・停止タスクの実験を通じて，提案手法が実モビリティに適用可能か調査する．本研究の成果は，リアルタイムな認識が求められる様々な応用分野に貢献することが期待される．
 %
 
 キーワード: ゼロショットセグメンテーション，物体追跡，自律走行モビリティ
@@ -34,6 +26,10 @@
 \end{center}
 \vspace{1.0zh}
 %
+% 英語版概要
+
+Recently, zero-shot segmentation technology that extracts objects based on natural language instructions has gained attention. However, these technologies using large-scale foundation models have a problem of slowing down the overall system processing speed when processing is repeated at high frequency. In this study, we propose a method to improve the real-time performance of zero-shot segmentation by reducing the frequency of high-cost object detection processing and interpolating the intervals with lightweight object tracking. Specifically, object detection is performed using Grounding DINO based on text prompts, and segmentation masks are generated using SAM2. In subsequent frames, feature points are extracted based on the Shi-Tomasi method and tracked using the pyramid optical flow based on the Lucas-Kanade method to update the position and size of the object. This reduces the processing frequency of detection and segmentation, improving the overall system throughput. Furthermore, we apply this method to perception and decision-making tasks in autonomous mobility and investigate its applicability to real-world environments. Through experiments on vanishing point navigation and obstacle detection and stopping tasks in real environments, we investigate whether the proposed method can be applied to real mobility. The results of this study are expected to contribute to various application fields that require real-time recognition.
 
 
-keywords: 
+Keywords: Zero-shot segmentation, Object tracking, Autonomous mobility
+%

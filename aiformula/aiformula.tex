@@ -16,8 +16,25 @@
 \label{fig:aiformula_course}
 \end{figure}
 
+\newpage
+
 \section{実環境での実験方法}
-実環境への適用可能性を調査するため，モビリティがスタートラインから時速 6 [km/h] で経路を走行し，コースアウトせずに障害物の手前で停止できるかの挙動を確認する．実験環境の詳細は\Table{tab:env_aiformula}の通りである．テキストプロンプトには，“white line. road. red pylon.”を指定して，その内の“white line”を消失点ナビゲーション，“red pylon”を障害物検出・停止タスクに用いた．走行経路は\Fig{fig:cource}に示す通り，破線の無い白線部分を対象とし，スタートから 20 [m] 先に障害物を設置した．
+実環境への適用可能性を調査するため，モビリティがスタートラインから時速 6 [km/h] で経路を走行し，コースアウトせずに障害物の手前で停止できるかの挙動を確認する．
+システムの概要を\Fig{fig:exp_system}に示す．事前に設定したテキストプロンプトと画像を入力として，提案手法によりBBoxとセグメンテーションマスクを生成する．生成したBBoxとセグメンテーションマスクを用いて，後述するルールベース制御器により消失点ナビゲーションおよび障害物検出・停止タスクを実行する．
+実験環境の詳細は\Table{tab:env_aiformula}の通りである．テキストプロンプトには，“white line. road. red pylon.”を指定して，その内の“white line”を消失点ナビゲーション，“red pylon”を障害物検出・停止タスクに用いた．走行経路は\Fig{fig:cource}に示す通り，破線の無い白線部分を対象とし，スタートから 20 [m] 先に障害物を設置した．
+
+\vspace{1cm}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.0\linewidth]{images/pdf/exp_system.pdf}
+\caption{Overview of the system configuration for vanishing point navigation and obstacle detection/stopping tasks.}
+\label{fig:exp_system}
+\end{figure}
+
+\newpage
+
+\vspace{1cm}
 
 \begin{table}[H]
 \centering
@@ -35,6 +52,8 @@ SAM Model & sam2.1\_hiera\_small \\
 \end{tabular}
 \end{table}
 
+\vspace{1cm}
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=1.0\linewidth]{images/pdf/cource.pdf}
@@ -44,7 +63,10 @@ SAM Model & sam2.1\_hiera\_small \\
 
 \newpage
 
+\subsection{消失点ナビゲーション}
 提案手法によるセグメンテーションの結果を用いて，消失点ナビゲーションへ応用する実験を行う．ナビゲーションでは，最初に提案手法を用いてセグメンテーションされた白線を抽出する．次に，ハフ変換により2本の白線を求め，その消失点を算出する．最後に，算出した消失点が画像中心に位置するよう，PID制御に基づきモビリティのヨー角速度を制御することで白線の消失点に向かって進むようにする．これによって，モビリティはレーンの白線に沿って経路を走行する．本手順による処理結果を\Fig{fig:target}に示す．図中では，ハフ変換の出力を青線で，消失点を赤点で示している．
+
+\vspace{1cm}
 
 \begin{figure}[H]
 \centering
@@ -55,7 +77,10 @@ SAM Model & sam2.1\_hiera\_small \\
 
 \newpage
 
+\subsection{障害物検出・停止タスク}
 提案手法による物体検出および物体追跡の結果を用いて，障害物検出・停止タスクへ応用する実験を行う．実験では，\Fig{fig:bbox}の赤いパイロンを障害物とする．モビリティがパイロンに接近し，検出したBBoxの面積が事前に設定したしきい値を超えた場合に自動停止させる．しきい値は，実験開始前にモビリティの5m手前にパイロンを置き，そのときに検出されるBBoxの面積を計測して設定した．
+
+\vspace{1cm}
 
 \begin{figure}[H]
 \centering
@@ -83,6 +108,8 @@ SAM Model & sam2.1\_hiera\_small \\
 \newpage
 
 \Fig{fig:stop}に，障害物検出・停止タスクの結果を示す．事前に設定した目標停止距離5 [m]に対し，モビリティは障害物の約3.4 [m]手前で停止し，目標と1.6 [m]の誤差が生じた．これは，モビリティの制動距離に加え，システム全体の処理遅延も影響していると考えられる．
+
+\vspace{1cm}
 
 \begin{figure}[H]
 \centering
