@@ -14,8 +14,10 @@
 
 \newpage
 
-\section{さらなる高速化に向けた提案手法の処理}
-さらなる高速化に向けた提案手法の処理について述べる．\Fig{fig:system_ver2}に示すように，さらなる高速化に向けた提案手法の処理は，(1) 物体検出およびセグメンテーション(2) 物体追跡，の 2 つの処理で構成される．以下にそれぞれの処理に関して述べる．
+\section{改良した各処理の詳細}
+改良した提案手法の処理について述べる．\Fig{fig:system_ver2}に示すように，改良した提案手法の処理は，(1) 物体検出およびセグメンテーション(2) 物体追跡，の 2 つの処理で構成される．以下にそれぞれの処理に関して述べる．
+
+\vspace{1cm}
 
 \begin{figure}[H]
 \centering
@@ -53,3 +55,52 @@
 \label{fig:comparison}
 \end{figure}
 
+\section{改良した提案手法の性能評価}
+改良した提案手法の基本的な性能を明らかにするための評価実験について述べる．性能評価の方法と結果および考察について以下に示す．
+
+\vspace{1cm}
+
+\subsection{性能評価の方法}
+この実験の目的は，従来手法（Lang-SAM）や第3章の提案手法と比較して改良した提案手法がどの程度処理速度を向上させるかを定量的に評価することである．
+実験環境の詳細を\Table{tab:env_evaluation_improved}に示す．コンピュータは前述のモビリティの制御に用いた NVIDIA Jetson AGX Orin (32GB) を使用し，MOT17データセット\cite{mot16}を使用した．また，テキストプロンプトには“pedestrian”を指定した．
+
+\vspace{1cm}
+
+\begin{table}[htbp]
+\centering
+\caption{Experimental environment for evaluation of the improved proposed method.}
+\label{tab:env_evaluation_improved}
+\begin{tabular}{ll}
+\hline
+Computer & NVIDIA Jetson AGX Orin 32GB \\
+Input Text & ``pedestrian.'' \\
+Grounding DINO & grounding-dino-base \\
+SAM Model & sam2.1\_hiera\_small \\
+\hline
+\end{tabular}
+\end{table}
+
+\newpage
+
+\subsection{結果と考察}
+評価指標には，システム全体の処理速度を示す FPS (Frames Per Second) を用いた．評価データには，mot17-02-frcnnの 600 フレームを用いた．比較対象として，毎フレーム物体検出を行う従来手法（Lang-SAM）と第3章の提案手法でも同様の評価を行った．
+
+実験結果を\Table{tab:results_improved}に示す．改良した提案手法は第3章の提案手法に比べて処理速度が向上していることが確認された．また，従来手法と比較すると，改良した提案手法は処理速度を約22倍に向上させることができた（0.79 FPS → 17.39 FPS）．この要因として，第3章の提案手法では比較的小さいモデル（sam2.1\_ hiera\_small）を使用していたものの，セグメンテーション処理を繰り返し実行していたため処理速度が低下していたことが挙げられる．改良した提案手法では，これを一定間隔での実行に変更することで処理頻度を低減し，FPSの向上を実現したと考えられる．
+
+\vspace{1cm}
+
+\begin{table}[htbp]
+\centering
+\caption{Experimental results for evaluation of the improved proposed method.}
+\label{tab:results_improved}
+\begin{tabular}{lcc}
+\hline
+Method & FPS \\
+\hline
+Conventional & 0.79 \\
+Proposed (Redetection interval: 2.0s) & 2.15 \\
+Improved Proposed (Redetection interval: 2.0s) & 17.39 \\
+\hline
+\end{tabular}
+\end{table}
+\newpage
