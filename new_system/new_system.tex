@@ -1,7 +1,7 @@
 %!TEX root = ../thesis.tex
 
 \section{処理速度の課題}
-第3章で述べた提案手法は，リアルタイム性を向上するゼロショットセグメンテーションを実現する一方で，処理速度（FPS）が十分に得られないという課題がある．特に，SAM2は大規模なモデルであり，毎フレーム実行すると処理速度が低下し，リアルタイム性が損なわれる可能性がある．この問題を解決するために，本章では提案手法の処理フローを再構築した処理速度の向上手法（以後，再構築手法と呼ぶ）について検討する．
+第3章で述べた提案手法は，リアルタイム性を向上するゼロショットセグメンテーションを実現する一方で，処理速度（FPS）が十分に得られないという課題がある．特に，SAM2は大規模なモデルであり，毎フレーム実行すると処理速度が低下し，リアルタイム性が損なわれる可能性がある．この問題を解決するために，本章では処理フローを再構築することで処理速度を向上する手法（以後，再構築手法と呼ぶ）について検討する．
 
 \vspace{1cm}
 
@@ -22,7 +22,7 @@
 \begin{figure}[H]
 \centering
 \includegraphics[width=1.0\linewidth]{images/pdf/system_ver2.pdf}
-\caption{Overview of the improved system.}
+\caption{Overview of the restructured system.}
 \label{fig:system_ver2}
 \end{figure}
 
@@ -48,10 +48,10 @@
 \begin{minipage}{1.0\linewidth}
 \centering
 \includegraphics[width=1.0\linewidth]{images/pdf/system_process.pdf}
-\subcaption{Improved method in this chapter}
+\subcaption{Restructured method in this chapter}
 \label{fig:comparison_improved}
 \end{minipage}
-\caption{Comparison between the proposed method in Chapter 3 and the improved method in this chapter.}
+\caption{Comparison between the proposed method in Chapter 3 and the restructured method in this chapter.}
 \label{fig:comparison}
 \end{figure}
 
@@ -68,7 +68,7 @@
 
 \begin{table}[htbp]
 \centering
-\caption{Experimental environment for evaluation of the improved proposed method.}
+\caption{Experimental environment for evaluation of the restructured proposed method.}
 \label{tab:env_evaluation_improved}
 \begin{tabular}{ll}
 \hline
@@ -91,7 +91,7 @@ SAM Model & sam2.1\_hiera\_small \\
 
 \begin{table}[htbp]
 \centering
-\caption{Experimental results for evaluation of the improved proposed method.}
+\caption{Experimental results for evaluation of the restructured proposed method.}
 \label{tab:results_improved}
 \begin{tabular}{lcc}
 \hline
@@ -99,7 +99,7 @@ Method & FPS & IoU \\
 \hline
 Conventional & 0.79 & 0.814 \\
 Proposed (Redetection interval: 2.0s) & 2.15 & 0.707 \\
-Improved Proposed (Redetection interval: 2.0s) & 17.39 & 0.707 \\
+Restructured Proposed (Redetection interval: 2.0s) & 17.39 & 0.707 \\
 \hline
 \end{tabular}
 \end{table}
@@ -107,7 +107,7 @@ Improved Proposed (Redetection interval: 2.0s) & 17.39 & 0.707 \\
 \newpage
 
 \subsubsection{モビリティ制御タスクへの応用と応答性の改善}
-処理速度の向上がモビリティの経路追従や障害物停止といった制御タスクに与える影響について考察する．提案手法ではFPSが大幅に向上し（17.39 FPS），BBoxの検出正確度（IoU = 0.707）が維持されているため，BBoxを用いた制御タスクでは，単純に処理速度の向上によって制御ループの周期が短縮され，応答性が改善することが期待される．
+処理速度の向上がモビリティの経路追従や障害物停止といった制御タスクに与える影響について考察する．再構築手法ではFPSが大幅に向上し（17.39 FPS），BBoxの検出正確度（IoU = 0.707）が維持されているため，BBoxを用いた制御タスクでは，単純に処理速度の向上によって制御ループの周期が短縮され，応答性が改善することが期待される．
 
 一方で，セグメンテーションマスクを用いた制御タスクの場合，再構築手法ではSAM2の高精度なセグメンテーションマスクが毎フレーム得られるわけではなく，一定間隔でしか更新されない．その間，追跡した特徴点群を膨張・複製することでセグメンテーションマスクのように扱うため，処理速度は向上するものの，セグメンテーションマスクの精度は時間経過に伴って劣化する可能性がある．したがって，応答性は向上する一方で，予期せぬ特徴点の喪失や誤追跡などが発生し，制御性能に悪影響を与える可能性があることに留意する必要がある．
 
