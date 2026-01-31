@@ -1,7 +1,7 @@
 %!TEX root = ../thesis.tex
 
 \section{背景}
-近年，大規模基盤モデルの発展により，画像認識分野は大きな進歩を遂げている．特に，Transformer アーキテクチャに基づく視覚言語統合モデルの登場により，従来の教師あり学習では困難であった物体認識が可能となった．例えば，Shilong Liu らにより開発されたテキストプロンプトから物体位置を特定する Grounding DINO \cite{grounding_dino} や，Alexander Kirillov らにより開発されたプロンプトに応じて物体を高精度にセグメンテーションするSegment Anything Model (SAM) \cite{sam} が挙げられる．
+近年，大規模基盤モデルの発展により，画像認識分野は大きな進歩を遂げている．特に，Transformer アーキテクチャに基づく視覚言語統合モデルの登場により，従来の教師あり学習では困難であった物体認識が可能となった．例えば，Liu らにより開発されたテキストプロンプトから物体位置を特定する Grounding DINO \cite{grounding_dino} や，Kirillov らにより開発されたプロンプトに応じて物体を高精度にセグメンテーションするSegment Anything Model (SAM) \cite{sam} が挙げられる．
 
 本研究室では例年つくばチャレンジ\cite{tsukuba_challenge}に参加しており，これまでカメラを用いた自律移動ロボットの認識・判断タスクに取り組んできた．具体例として，信号認識ではYOLOv5 \cite{yolov5}を用い，ロボット搭載カメラで収集した画像に対して青・赤の2クラスでラベル付けを行い，計600枚（訓練523枚，検証77枚）からデータセットを自作して学習した\cite{tc2023}．学習後は訓練済みモデルにより信号色の認識を検証し，青・赤ともに高い正確度で認識できることを確認した（\Fig{fig:traffic_lights}）．
 
@@ -53,25 +53,25 @@
 
 \newpage
 
-Grounding DINO のフレームワークを\Fig{fig:gdino_framework}に示す．このモデルは，BERT由来の言語エンコーダと画像特徴を融合することで，テキストと画像の両方の情報を統合的に処理し，事前に定義されていない物体カテゴリであっても自然言語による指示のみでゼロショット物体検出を実現している．\Fig{fig:gdino} に示すように，Grounding DINOは多様な物体に対して高精度なバウンディングボックスを生成し，複雑なシーン内の複数物体を識別・位置特定できることが確認できる．
+文献\cite{grounding_dino}を参考に作成した Grounding DINO のシステムを\Fig{fig:gdino_framework}に示す．このモデルは，Devlinらにより開発されたBERT\cite{bert}由来の言語エンコーダと画像特徴を融合することで，テキストと画像の両方の情報を統合的に処理し，事前に定義されていない物体カテゴリであっても自然言語による指示のみでゼロショット物体検出を実現している．\Fig{fig:gdino} に示すように，Grounding DINOは多様な物体に対して高精度なバウンディングボックスを生成し，複雑なシーン内の複数物体を識別・位置特定できることが確認できる．
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.9\linewidth]{images/pdf/gdino_frameworkv4.1.pdf}
-\caption[The framework of Grounding DINO.]{The framework of Grounding DINO. (Source: \cite{grounding_dino})}
+\includegraphics[width=1.0\linewidth]{images/pdf/gdino_frameworkv4.1.pdf}
+\caption{The system of Grounding DINO.}
 \label{fig:gdino_framework}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.9\linewidth]{images/pdf/gdino.pdf}
-\caption[Visualizations of model outputs.]{Visualizations of model outputs. (Source: \cite{grounding_dino})}
+\includegraphics[width=0.85\linewidth]{images/pdf/gdino.pdf}
+\caption{Visualizations of model outputs.}
 \label{fig:gdino}
 \end{figure}
 
 \newpage
 
-一方，SAMは11億枚を超える大規模マスクデータセット（SA-1B）で学習され，プロンプト（point, box, mask）に基づく高精度なセグメンテーションを提供する（\Fig{fig:sam_overview}）．SA-1Bは，1,100万枚の多様で高解像度，かつライセンスとプライバシー保護が施された画像と，11億の高品質セグメンテーションマスクから構成されている．これらのマスクはSAMによって完全自動でアノテーションされており，人間による評価と多数の実験により，その高品質性と多様性が検証されている．\Fig{fig:sam}に示すように，SAMは1画像あたり平均約100個のマスクを生成し，画像内の多様な物体や領域を詳細にセグメンテーションすることができる．この例では，画像ごとのマスク数によってグループ化された多様なシーンが示されており，SAMの汎用性と精度の高さが確認できる．
+一方，SAMは11億枚を超える大規模マスクデータセット（SA-1B）で学習され，プロンプト（point, box, mask）に基づく高精度なセグメンテーションを提供する．文献\cite{sam}を参考に作成したSAMの概要を\Fig{fig:sam_overview}に示す．SA-1Bは，1,100万枚の多様で高解像度，かつライセンスとプライバシー保護が施された画像と，11億の高品質セグメンテーションマスクから構成されている．これらのマスクはSAMによって完全自動でアノテーションされており，人間による評価と多数の実験により，その高品質性と多様性が検証されている．SAMは1画像あたり平均約100個のマスクを生成し，画像内の多様な物体や領域を詳細にセグメンテーションすることができる．
 
 \vspace{1cm}
 
@@ -97,19 +97,8 @@ Grounding DINO のフレームワークを\Fig{fig:gdino_framework}に示す．�
 \caption{Data: data engine (top) and dataset (bottom)}
 \label{fig:sam_data}
 \end{subfigure}
-\caption[We aim to build a foundation model for segmentation by introducing three interconnected components: a promptable segmentation task, a segmentation model (SAM) that powers data annotation and enables zero-shot transfer to a range
-of tasks via prompt engineering, and a data engine for collecting SA-1B, our dataset of over 1 billion masks.]{We aim to build a foundation model for segmentation by introducing three interconnected components: a promptable segmentation task, a segmentation model (SAM) that powers data annotation and enables zero-shot transfer to a range
-of tasks via prompt engineering, and a data engine for collecting SA-1B, our dataset of over 1 billion masks. (source: \cite{sam})}
+\caption{SAM consists of three components: a promptable segmentation task, a segmentation model (SAM) that enhances data annotation and enables zero-shot transfer to various tasks via prompt engineering, and a data engine for collecting SA-1B, a dataset of over 1 billion masks.}
 \label{fig:sam_overview}
-\end{figure}
-
-\newpage
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=1.0\linewidth]{images/pdf/sam.pdf}
-\caption[Example images with overlaid masks from our newly introduced dataset, SA-1B. SA-1B contains 11M diverse, high-resolution, licensed, and privacy protecting images and 1.1B high-quality segmentation masks. These masks were annotated fully automatically by SAM, and as we verify by human ratings and numerous experiments, are of high quality and diversity. We group images by number of masks per image for visualization (there are ∼100 masks per image on average).]{Example images with overlaid masks from our newly introduced dataset, SA-1B. SA-1B contains 11M diverse, high-resolution, licensed, and privacy protecting images and 1.1B high-quality segmentation masks. These masks were annotated fully automatically by SAM, and as we verify by human ratings and numerous experiments, are of high quality and diversity. We group images by number of masks per image for visualization (there are ∼100 masks per image on average). (Source: \cite{sam})}
-\label{fig:sam}
 \end{figure}
 
 \newpage
@@ -131,28 +120,9 @@ of tasks via prompt engineering, and a data engine for collecting SA-1B, our dat
 \newpage
 
 \section{関連研究}
-システム全体の処理速度が遅くなるという問題に対する有効なアプローチとして，高コストな検出と軽量な追跡を組み合わせるTracking-by-Detectionのパラダイムが知られている．このパラダイムは，毎フレーム実行される高精度な物体検出の結果を，軽量な追跡アルゴリズムでフレームをまたいで関連付けることにより，物体のIDを維持し，安定した追跡をリアルタイムで実現するものである．その代表的な手法に SORT (Simple Online and Realtime Tracking) \cite{sort} が存在する．SORT は，カルマンフィルタによる物体の運動予測とハンガリアンアルゴリズムにより高速かつ高精度な多物体追跡を実現している．\Fig{fig:sort_result}にSORTのベンチマーク性能を示す．各マーカーは，トラッカーの精度と速度（FPS [Hz]）を示しており，高くかつ右に位置するほど優れていることを表している．この手法はリアルタイム性と精度の両立に優れていることが確認できる．
+システム全体の処理速度が遅くなるという問題に対する有効なアプローチとして，高コストな検出と軽量な追跡を組み合わせるTracking-by-Detectionのパラダイムが知られている．このパラダイムは，毎フレーム実行される高精度な物体検出の結果を，軽量な追跡アルゴリズムでフレームをまたいで関連付けることにより，物体のIDを維持し，安定した追跡をリアルタイムで実現するものである．その代表的な手法に Bewley らの SORT (Simple Online and Realtime Tracking) \cite{sort} が存在する．SORT は，カルマンフィルタによる物体の運動予測とハンガリアンアルゴリズムにより高速かつ高精度な多物体追跡を実現している．この手法はリアルタイム性と精度の両立に優れている．
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.5\linewidth]{images/pdf/sort_result.pdf}
-\caption[Benchmark performance of the proposed method (SORT) in relation to several baseline trackers. Each marker indicates a trackers accuracy and speed measured in frames per second (FPS), i.e. higher and more right is better.]{Benchmark performance of the proposed method (SORT) in relation to several baseline trackers. Each marker indicates a trackers accuracy and speed measured in frames per second (FPS) [Hz], i.e. higher and more right is
-better. (source: \cite{sort})}
-\label{fig:sort_result}
-\end{figure}
-
-\newpage
-
-SAM-PT（Segment Anything Meets Point Tracking）\cite{sampt} は，SAMをベースにしたインタラクティブなビデオセグメンテーション手法であり，軽量なポイントトラッカーを用いて動画内のポイントを追跡し，ゼロショットでの動画セグメンテーションを実現している．\Fig{fig:sampt}にSAM-PTの概要を示す．ユーザが指定したクエリポイントを，ポイントトラッカーで動画全体にわたって追跡し，各フレームでの軌跡予測とオクルージョンスコアを生成する．その後，SAMに非オクルードされたポイントをプロンプトとして与え，各フレーム独立にセグメンテーションマスクを出力する．さらに，追跡されたポイントは編集可能であり，より正確なセグメンテーションと追跡が可能となる．SAM-PTは検出と追跡を組み合わせる手法であるが，その主眼はセグメンテーションマスクの精度向上にある．したがって，本研究が目指すリアルタイム性の向上とは異なる研究目的を持つ．
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=1.0\linewidth]{images/pdf/sampt.pdf}
-\caption[Segment Anything Meets Point Tracking (SAM-PT). SAM-PT is a point-centric method that utilizes sparse point propagation for interactive video segmentation, enabling easier interaction and faster annotation. We extend SAM with long-term point trackers to effectively operate on videos in a zero-shot manner. SAM-PT takes user clicks as “query points” which either denote the target object (positive points) or designate non-target segments (negative points). The points are tracked throughout the video using point trackers that propagate the query points to all video frames, producing trajectory predictions and occlusion scores. SAM is subsequently prompted with
-the non-occluded points in the trajectories as to output a segmentation mask for each video frame independently. The propagated points can be further edited for accurate segmentation and tracking.]{Segment Anything Meets Point Tracking (SAM-PT). SAM-PT is a point-centric method that utilizes sparse point propagation for interactive video segmentation, enabling easier interaction and faster annotation. We extend SAM with long-term point trackers to effectively operate on videos in a zero-shot manner. SAM-PT takes user clicks as “query points” which either denote the target object (positive points) or designate non-target segments (negative points). The points are tracked throughout the video using point trackers that propagate the query points to all video frames, producing trajectory predictions and occlusion scores. SAM is subsequently prompted with
-the non-occluded points in the trajectories as to output a segmentation mask for each video frame independently. The propagated points can be further edited for accurate segmentation and tracking. (source: \cite{sampt})}
-\label{fig:sampt}
-\end{figure}
+Rajič らにより開発されたSAM-PT（Segment Anything Meets Point Tracking）\cite{sampt} は，SAMをベースにしたインタラクティブなビデオセグメンテーション手法であり，軽量なポイントトラッカーを用いて動画内のポイントを追跡し，ゼロショットでの動画セグメンテーションを実現している．ユーザが指定したクエリポイントを，ポイントトラッカーで動画全体にわたって追跡し，各フレームでの軌跡予測とオクルージョンスコアを生成する．その後，SAMに非オクルードされたポイントをプロンプトとして与え，各フレーム独立にセグメンテーションマスクを出力する．さらに，追跡されたポイントは編集可能であり，より正確なセグメンテーションと追跡が可能となる．SAM-PTは検出と追跡を組み合わせる手法であるが，その主眼はセグメンテーションマスクの精度向上にある．したがって，本研究が目指すリアルタイム性の向上とは異なる研究目的を持つ．
 
 \newpage
 
@@ -160,6 +130,6 @@ the non-occluded points in the trajectories as to output a segmentation mask for
 本研究では，言語指示によるゼロショットセグメンテーションのリアルタイム性を向上するために，高コストな物体検出処理の頻度を削減し，その間を軽量な物体追跡で補間する手法を提案する．本手法を時速 6 [km/h] で走行する自律走行モビリティの消失点ナビゲーションおよび障害物検出・停止タスクへ応用し，実環境への適用可能性を調査する．
 
 \section{論文構成}
-本章では，背景や関連研究，研究目的について述べた．第2章では，本研究の基盤になる要素技術について述べる．第3章では，ゼロショットセグメンテーションのリアルタイム性を向上するための手法について述べる．第4章では，提案手法の性能評価について述べる．第5章では，実環境への応用について述べる．第6章では，提案手法の改良について述べる．最後に，第7章では，本研究のまとめと今後の展望について述べる．
+本章では，背景や関連研究，研究目的について述べた．第2章では，本研究の基盤になる要素技術について述べる．第3章では，ゼロショットセグメンテーションのリアルタイム性を向上するための手法について述べる．第4章では，提案手法の性能評価について述べる．第5章では，実環境への応用について述べる．第6章では，処理速度の向上と性能評価について述べる．最後に，第7章では，本研究のまとめと今後の展望について述べる．
 
 \newpage

@@ -24,7 +24,7 @@
 
 この技術の核心は，物体の視覚的特徴と言語的記述を共通の埋め込み空間で対応付けることにある．画像はCNNまたはVision Transformerにより処理され，多スケールの特徴マップが生成される．テキストプロンプトはBERT\cite{bert}などの言語モデルによりエンコードされ，言語特徴ベクトルに変換される．視覚特徴と言語特徴は，cross-attention機構により相互作用する．言語特徴の各単語が画像特徴の各位置に対してattention重みを計算し，テキストプロンプト全体に対応する画像領域が特定される．
 
-推論時には，ユーザーが任意のテキストプロンプトを入力でき，単一物体の記述から属性を含む記述，関係性を含む記述まで対応可能である．信頼度スコアが閾値を超える検出のみが最終結果として採用される．この柔軟性により，事前に定義されていない任意の物体カテゴリに対して対応できる(\Fig{fig:zeroshot_detection})．
+推論時には，ユーザーが任意のテキストプロンプトを入力でき，単一物体の記述から属性を含む記述，関係性を含む記述まで対応可能である．信頼度スコアが閾値を超える検出のみが最終結果として採用される．この柔軟性により，事前に定義されていない任意の物体カテゴリに対応できる(\Fig{fig:zeroshot_detection})．
 
 \vspace{1cm}
 
@@ -68,7 +68,7 @@
 \begin{figure}[H]
 \centering
 \includegraphics[width=1.0\linewidth]{images/pdf/promptable_seg_model.pdf}
-\caption{Prompted zero-shot segmentation.}
+\caption{Promptable segmentation model.}
 \label{fig:promptable_seg_model}
 \end{figure}
 
@@ -81,7 +81,7 @@
 \begin{figure}[H]
 \centering
 \includegraphics[width=1.0\linewidth]{images/pdf/text_promptable_seg_model.pdf}
-\caption{Prompted zero-shot segmentation.}
+\caption{Text-prompted zero-shot segmentation.}
 \label{fig:text_promptable_seg_model}
 \end{figure}
 
